@@ -1,0 +1,9 @@
+{
+	"name": "capatazarchivaladf",
+	"location": "southeastasia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "9d42d944-616a-44e6-b85e-5a25244c2ebb",
+		"tenantId": "84c31ca0-ac3b-4eae-ad11-519d80233e6f"
+	}
+}
