@@ -1,0 +1,35 @@
+{
+	"name": "SinkDatasetParquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "CapatazDataLakeLinkedService",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"FileName": {
+				"type": "string"
+			},
+			"Directory": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().FileName",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().Directory",
+					"type": "Expression"
+				},
+				"fileSystem": "capataz-datalake"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
