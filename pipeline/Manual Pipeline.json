@@ -158,14 +158,14 @@
 											"value": "@activity('SQL Database to ADLS').output.rowsCopied",
 											"type": "Expression"
 										},
-										"type": "Int16"
+										"type": "Int32"
 									},
 									"Read": {
 										"value": {
 											"value": "@activity('SQL Database to ADLS').output.rowsRead",
 											"type": "Expression"
 										},
-										"type": "Int16"
+										"type": "Int32"
 									},
 									"TableName": {
 										"value": {
@@ -186,21 +186,21 @@
 											"value": "@variables('Year')",
 											"type": "Expression"
 										},
-										"type": "Int16"
+										"type": "Int32"
 									},
 									"Month": {
 										"value": {
 											"value": "@variables('Month')",
 											"type": "Expression"
 										},
-										"type": "Int16"
+										"type": "Int32"
 									},
 									"Day": {
 										"value": {
 											"value": "@variables('Day')",
 											"type": "Expression"
 										},
-										"type": "Int16"
+										"type": "Int32"
 									}
 								}
 							},
@@ -264,7 +264,7 @@
 							"dependsOn": [],
 							"policy": {
 								"timeout": "0.12:00:00",
-								"retry": 3,
+								"retry": 0,
 								"retryIntervalInSeconds": 30,
 								"secureOutput": false,
 								"secureInput": false
@@ -274,7 +274,7 @@
 								"source": {
 									"type": "AzureSqlSource",
 									"sqlReaderQuery": {
-										"value": "@if(\n    or(\n        equals(item().TableName, 'ProfileTimeKeepingWhosWorkings'),\n        equals(item().TableName, 'ProfileTimeKeepingWhosWorkings.Archive')\n    ),\n    concat(\n        'SELECT * FROM [', item().TableName, '] WITH (NOLOCK) WHERE YEAR([DateTimeInOut]) = ', variables('Year'), \n        ' AND MONTH([DateTimeInOut]) = ', variables('Month'), \n        if(\n            or(\n                or(equals(variables('Day'), null), equals(variables('Day'), '')), \n                equals(variables('Day'), 0)\n            ), \n            '', \n            concat(' AND DAY([DateTimeInOut]) = ', variables('Day'))\n        )\n    ),\n    concat(\n        'SELECT * FROM [', item().TableName, '] WITH (NOLOCK) WHERE YEAR([CreatedDate]) = ', variables('Year'), \n        ' AND MONTH([CreatedDate]) = ', variables('Month'), \n        if(\n            or(\n                or(equals(variables('Day'), null), equals(variables('Day'), '')), \n                equals(variables('Day'), 0)\n            ), \n            '', \n            concat(' AND DAY([CreatedDate]) = ', variables('Day'))\n        )\n    )\n)\n",
+										"value": "@if(\n    equals(item().TableName, 'ProfileTimeKeepingWhosWorkings'),\n    concat(\n        'SELECT * FROM [', item().TableName, '] WITH (NOLOCK) WHERE YEAR([DateTimeInOut]) = ', variables('Year')\n    ),\n    concat(\n        'SELECT * FROM [', item().TableName, '] WITH (NOLOCK) WHERE YEAR([CreatedDate]) = ', variables('Year')\n    )\n)\n",
 										"type": "Expression"
 									},
 									"queryTimeout": "02:00:00",
@@ -283,7 +283,8 @@
 								"sink": {
 									"type": "AzureSqlSink",
 									"writeBehavior": "insert",
-									"sqlWriterUseTableLock": true,
+									"sqlWriterUseTableLock": false,
+									"tableOption": "autoCreate",
 									"disableMetricsCollection": false
 								},
 								"enableStaging": false,
@@ -585,8 +586,7 @@
 				"defaultValue": 2022
 			},
 			"Month": {
-				"type": "Integer",
-				"defaultValue": 10
+				"type": "Integer"
 			},
 			"Day": {
 				"type": "Integer"
