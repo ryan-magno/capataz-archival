@@ -1,5 +1,5 @@
 {
-	"name": "Archived Data Pipeline",
+	"name": "Archive Tables Pipeline",
 	"properties": {
 		"activities": [
 			{
@@ -288,6 +288,18 @@
 								},
 								"sink": {
 									"type": "AzureSqlSink",
+									"sqlWriterStoredProcedureName": "[dbo].[MoveArchivedData]",
+									"sqlWriterTableType": "dbo.ArchivedTableType",
+									"storedProcedureTableTypeParameterName": "ArchivedTableName",
+									"storedProcedureParameters": {
+										"ArchivedTableName": {
+											"type": "String",
+											"value": {
+												"value": "@item().TableName",
+												"type": "Expression"
+											}
+										}
+									},
 									"disableMetricsCollection": false
 								},
 								"enableStaging": false,

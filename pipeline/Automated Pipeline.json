@@ -1,5 +1,5 @@
 {
-	"name": "Automated Pipeline to Data Lake",
+	"name": "Automated Pipeline",
 	"properties": {
 		"activities": [
 			{

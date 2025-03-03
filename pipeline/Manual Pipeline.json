@@ -52,84 +52,11 @@
 					"batchCount": 6,
 					"activities": [
 						{
-							"name": "SQL Database to ADLS",
-							"type": "Copy",
-							"dependsOn": [
-								{
-									"activity": "Live to Archive",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
-							"policy": {
-								"timeout": "0.12:00:00",
-								"retry": 3,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"source": {
-									"type": "AzureSqlSource",
-									"queryTimeout": "02:00:00",
-									"partitionOption": "None"
-								},
-								"sink": {
-									"type": "ParquetSink",
-									"storeSettings": {
-										"type": "AzureBlobFSWriteSettings"
-									},
-									"formatSettings": {
-										"type": "ParquetWriteSettings"
-									}
-								},
-								"enableStaging": false,
-								"translator": {
-									"type": "TabularTranslator",
-									"typeConversion": true,
-									"typeConversionSettings": {
-										"allowDataTruncation": true,
-										"treatBooleanAsNumber": false
-									}
-								}
-							},
-							"inputs": [
-								{
-									"referenceName": "ArchivedDBDataset",
-									"type": "DatasetReference",
-									"parameters": {
-										"TableName": {
-											"value": "@item().TableName",
-											"type": "Expression"
-										}
-									}
-								}
-							],
-							"outputs": [
-								{
-									"referenceName": "SinkDatasetParquet",
-									"type": "DatasetReference",
-									"parameters": {
-										"FileName": {
-											"value": "@concat(\n    variables('Year'), '-', \n    variables('Month'), \n    if(equals(variables('Day'), ''), '', concat('-', variables('Day'))),\n    ' - ', pipeline().RunId, '.parquet'\n)\n",
-											"type": "Expression"
-										},
-										"Directory": {
-											"value": "@concat(replace(item().TableName, '.Archived', ''), '/', variables('Year'), '/', variables('Month'), '/')",
-											"type": "Expression"
-										}
-									}
-								}
-							]
-						},
-						{
 							"name": "Update Monitoring Table",
 							"type": "SqlServerStoredProcedure",
 							"dependsOn": [
 								{
-									"activity": "SQL Database to ADLS",
+									"activity": "Live to Archive DB",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -148,21 +75,21 @@
 								"storedProcedureParameters": {
 									"Remarks": {
 										"value": {
-											"value": "@activity('SQL Database to ADLS').error",
+											"value": "@activity('Live to Archive DB').error",
 											"type": "Expression"
 										},
 										"type": "String"
 									},
 									"Write": {
 										"value": {
-											"value": "@activity('SQL Database to ADLS').output.rowsCopied",
+											"value": "@activity('Live to Archive DB').output.rowsCopied",
 											"type": "Expression"
 										},
 										"type": "Int32"
 									},
 									"Read": {
 										"value": {
-											"value": "@activity('SQL Database to ADLS').output.rowsRead",
+											"value": "@activity('Live to Archive DB').output.rowsRead",
 											"type": "Expression"
 										},
 										"type": "Int32"
@@ -214,7 +141,7 @@
 							"type": "SqlServerStoredProcedure",
 							"dependsOn": [
 								{
-									"activity": "SQL Database to ADLS",
+									"activity": "Live to Archive DB",
 									"dependencyConditions": [
 										"Failed"
 									]
@@ -233,7 +160,7 @@
 								"storedProcedureParameters": {
 									"Remarks": {
 										"value": {
-											"value": "@concat('Errors: ', string(activity('SQL Database to ADLS').output.errors))\n",
+											"value": "@concat('Errors: ', string(activity('Live to Archive DB').output.errors))\n",
 											"type": "Expression"
 										},
 										"type": "String"
@@ -259,7 +186,7 @@
 							}
 						},
 						{
-							"name": "Live to Archive",
+							"name": "Live to Archive DB",
 							"type": "Copy",
 							"dependsOn": [],
 							"policy": {
@@ -274,7 +201,7 @@
 								"source": {
 									"type": "AzureSqlSource",
 									"sqlReaderQuery": {
-										"value": "@if(\n    equals(item().TableName, 'ProfileTimeKeepingWhosWorkings'),\n    concat(\n        'SELECT * FROM [', item().TableName, '] WITH (NOLOCK) WHERE YEAR([DateTimeInOut]) = ', variables('Year')\n    ),\n    concat(\n        'SELECT * FROM [', item().TableName, '] WITH (NOLOCK) WHERE YEAR([CreatedDate]) = ', variables('Year')\n    )\n)\n",
+										"value": "@if(\n    equals(item().TableName, 'ProfileTimeKeepingWhosWorkings'),\n    concat(\n        'SELECT * FROM [', item().TableName, '] WITH (NOLOCK) WHERE YEAR([DateTimeInOut]) = ', variables('Year'), \n        if(\n            or(\n                or(equals(variables('Month'), null), equals(variables('Month'), '')), \n                equals(variables('Month'), 0)\n            ), \n            '', \n            concat(' AND MONTH([DateTimeInOut]) = ', variables('Month'))\n        ),\n        if(\n            or(\n                or(equals(variables('Day'), null), equals(variables('Day'), '')), \n                equals(variables('Day'), 0)\n            ), \n            '', \n            concat(' AND DAY([DateTimeInOut]) = ', variables('Day'))\n        )\n    ),\n    concat(\n        'SELECT * FROM [', item().TableName, '] WITH (NOLOCK) WHERE YEAR([CreatedDate]) = ', variables('Year'), \n        if(\n            or(\n                or(equals(variables('Month'), null), equals(variables('Month'), '')), \n                equals(variables('Month'), 0)\n            ), \n            '', \n            concat(' AND MONTH([CreatedDate]) = ', variables('Month'))\n        ),\n        if(\n            or(\n                or(equals(variables('Day'), null), equals(variables('Day'), '')), \n                equals(variables('Day'), 0)\n            ), \n            '', \n            concat(' AND DAY([CreatedDate]) = ', variables('Day'))\n        )\n    )\n)\n",
 										"type": "Expression"
 									},
 									"queryTimeout": "02:00:00",
@@ -355,8 +282,6 @@
 			{
 				"name": "Email Contents",
 				"type": "Lookup",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "If Condition for Data Validation",
@@ -382,14 +307,16 @@
 						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "CapatazDB",
+						"type": "DatasetReference"
 					}
 				}
 			},
 			{
 				"name": "If Condition for Data Validation",
 				"type": "IfCondition",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Sum of Rows Read and Copied",
@@ -522,8 +449,6 @@
 			{
 				"name": "Sum of Rows Read and Copied",
 				"type": "Lookup",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Iterate the Tables",
@@ -550,14 +475,16 @@
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
+					"dataset": {
+						"referenceName": "CapatazDB",
+						"type": "DatasetReference"
+					},
 					"firstRowOnly": false
 				}
 			},
 			{
 				"name": "Get Total Runtime",
 				"type": "SetVariable",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Email Contents",
@@ -583,10 +510,11 @@
 		"variables": {
 			"Year": {
 				"type": "Integer",
-				"defaultValue": 2022
+				"defaultValue": 2024
 			},
 			"Month": {
-				"type": "Integer"
+				"type": "Integer",
+				"defaultValue": 2
 			},
 			"Day": {
 				"type": "Integer"
