@@ -60,82 +60,11 @@
 					"batchCount": 6,
 					"activities": [
 						{
-							"name": "SQL Database to ADLS",
-							"type": "Copy",
-							"dependsOn": [
-								{
-									"activity": "SQL Database to ArchivedDB",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
-							"policy": {
-								"timeout": "0.12:00:00",
-								"retry": 3,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"source": {
-									"type": "AzureSqlSource",
-									"sqlReaderQuery": {
-										"value": "@if(\n    or(\n        equals(item().TableName, 'ProfileTimeKeepingWhosWorkings'),\n        equals(item().TableName, 'ProfileTimeKeepingWhosWorkings.Archived')\n    ),\n    concat(\n        'SELECT * FROM [', item().TableName, '] WITH (NOLOCK) WHERE YEAR([DateTimeInOut]) = ', item().ArchivalYear, \n        ' AND MONTH([DateTimeInOut]) = ', item().ArchivalMonth, \n        ' AND DAY([DateTimeInOut]) = ', item().ArchivalDay\n    ),\n    concat(\n        'SELECT * FROM [', item().TableName, '] WITH (NOLOCK) WHERE YEAR([CreatedDate]) = ', item().ArchivalYear, \n        ' AND MONTH([CreatedDate]) = ', item().ArchivalMonth, \n        ' AND DAY([CreatedDate]) = ', item().ArchivalDay\n    )\n)\n",
-										"type": "Expression"
-									},
-									"queryTimeout": "02:00:00",
-									"partitionOption": "None"
-								},
-								"sink": {
-									"type": "ParquetSink",
-									"storeSettings": {
-										"type": "AzureBlobFSWriteSettings"
-									},
-									"formatSettings": {
-										"type": "ParquetWriteSettings"
-									}
-								},
-								"enableStaging": false,
-								"translator": {
-									"type": "TabularTranslator",
-									"typeConversion": true,
-									"typeConversionSettings": {
-										"allowDataTruncation": true,
-										"treatBooleanAsNumber": false
-									}
-								}
-							},
-							"inputs": [
-								{
-									"referenceName": "CapatazDB",
-									"type": "DatasetReference"
-								}
-							],
-							"outputs": [
-								{
-									"referenceName": "SinkDatasetParquet",
-									"type": "DatasetReference",
-									"parameters": {
-										"FileName": {
-											"value": "@concat(item().ArchivalYear, '-', item().ArchivalMonth, '-', item().ArchivalDay, ' - ', pipeline().RunId, '.parquet')\n",
-											"type": "Expression"
-										},
-										"Directory": {
-											"value": "@concat(replace(item().TableName, '.Archived', ''), '/', item().ArchivalYear, '/', item().ArchivalMonth, '/')\n",
-											"type": "Expression"
-										}
-									}
-								}
-							]
-						},
-						{
 							"name": "Update Monitoring Table",
 							"type": "SqlServerStoredProcedure",
 							"dependsOn": [
 								{
-									"activity": "SQL Database to ADLS",
+									"activity": "Live to Archive DB",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -154,21 +83,21 @@
 								"storedProcedureParameters": {
 									"Remarks": {
 										"value": {
-											"value": "@activity('SQL Database to ADLS').error",
+											"value": "@activity('Live to Archive DB').error",
 											"type": "Expression"
 										},
 										"type": "String"
 									},
 									"Read": {
 										"value": {
-											"value": "@activity('SQL Database to ADLS').output.rowsCopied",
+											"value": "@activity('Live to Archive DB').output.rowsCopied",
 											"type": "Expression"
 										},
 										"type": "Int16"
 									},
 									"Write": {
 										"value": {
-											"value": "@activity('SQL Database to ADLS').output.rowsRead",
+											"value": "@activity('Live to Archive DB').output.rowsRead",
 											"type": "Expression"
 										},
 										"type": "Int16"
@@ -220,7 +149,7 @@
 							"type": "SqlServerStoredProcedure",
 							"dependsOn": [
 								{
-									"activity": "SQL Database to ADLS",
+									"activity": "Live to Archive DB",
 									"dependencyConditions": [
 										"Failed"
 									]
@@ -239,7 +168,7 @@
 								"storedProcedureParameters": {
 									"Errors": {
 										"value": {
-											"value": "@concat('Errors: ', string(activity('SQL Database to ADLS').output.errors))\n",
+											"value": "@concat('Errors: ', string(activity('Live to Archive DB').output.errors))\n",
 											"type": "Expression"
 										},
 										"type": "String"
@@ -266,7 +195,7 @@
 							}
 						},
 						{
-							"name": "SQL Database to ArchivedDB",
+							"name": "Live to Archive DB",
 							"type": "Copy",
 							"dependsOn": [],
 							"policy": {
@@ -291,7 +220,6 @@
 									"type": "AzureSqlSink",
 									"writeBehavior": "insert",
 									"sqlWriterUseTableLock": true,
-									"tableOption": "autoCreate",
 									"disableMetricsCollection": false
 								},
 								"enableStaging": false,
@@ -316,7 +244,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"TableName": {
-											"value": "@replace(item().TableName, '.Archived', '')",
+											"value": "@item().TableName",
 											"type": "Expression"
 										}
 									}
