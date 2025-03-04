@@ -512,7 +512,7 @@
 			},
 			"Month": {
 				"type": "Integer",
-				"defaultValue": 4
+				"defaultValue": 8
 			},
 			"Day": {
 				"type": "Integer"
