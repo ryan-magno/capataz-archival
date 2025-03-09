@@ -1,0 +1,112 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "capatazarchivaladf"
+		},
+		"ArchivedDBLinkedService_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ArchivedDBLinkedService'"
+		},
+		"CapatazDBLinkedService_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'CapatazDBLinkedService'"
+		},
+		"CapatazDataLakeLinkedService_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'CapatazDataLakeLinkedService'"
+		},
+		"ArchivedDBLinkedService_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "capatazserver.database.windows.net"
+		},
+		"ArchivedDBLinkedService_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "archivaldb-capataz"
+		},
+		"ArchivedDBLinkedService_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sqladmin"
+		},
+		"CapatazDBLinkedService_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "capatazserver.database.windows.net"
+		},
+		"CapatazDBLinkedService_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "New-Capataz-Staging"
+		},
+		"CapatazDBLinkedService_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sqladmin"
+		},
+		"CapatazDataLakeLinkedService_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://capatazadls.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "capatazarchivaladf_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ArchivedDBLinkedService_password": {
+						"value": "[parameters('ArchivedDBLinkedService_password')]"
+					},
+					"CapatazDBLinkedService_password": {
+						"value": "[parameters('CapatazDBLinkedService_password')]"
+					},
+					"CapatazDataLakeLinkedService_accountKey": {
+						"value": "[parameters('CapatazDataLakeLinkedService_accountKey')]"
+					},
+					"ArchivedDBLinkedService_properties_typeProperties_server": {
+						"value": "[parameters('ArchivedDBLinkedService_properties_typeProperties_server')]"
+					},
+					"ArchivedDBLinkedService_properties_typeProperties_database": {
+						"value": "[parameters('ArchivedDBLinkedService_properties_typeProperties_database')]"
+					},
+					"ArchivedDBLinkedService_properties_typeProperties_userName": {
+						"value": "[parameters('ArchivedDBLinkedService_properties_typeProperties_userName')]"
+					},
+					"CapatazDBLinkedService_properties_typeProperties_server": {
+						"value": "[parameters('CapatazDBLinkedService_properties_typeProperties_server')]"
+					},
+					"CapatazDBLinkedService_properties_typeProperties_database": {
+						"value": "[parameters('CapatazDBLinkedService_properties_typeProperties_database')]"
+					},
+					"CapatazDBLinkedService_properties_typeProperties_userName": {
+						"value": "[parameters('CapatazDBLinkedService_properties_typeProperties_userName')]"
+					},
+					"CapatazDataLakeLinkedService_properties_typeProperties_url": {
+						"value": "[parameters('CapatazDataLakeLinkedService_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
