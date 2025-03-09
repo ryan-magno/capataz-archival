@@ -18,7 +18,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "SELECT TableName FROM dbo.MetadataTable WHERE IsActive = 1",
+							"value": "SELECT TableName FROM Snowflake.MetadataTable WHERE IsActive = 1",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -71,7 +71,7 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"storedProcedureName": "[dbo].[UpdateMonitoring]",
+								"storedProcedureName": "[Snowflake].[Capataz-ADF_UpdateMonitoring]",
 								"storedProcedureParameters": {
 									"Remarks": {
 										"value": {
@@ -156,7 +156,7 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"storedProcedureName": "[dbo].[LogError]",
+								"storedProcedureName": "[Snowflake].[Capataz-ADF_LogError]",
 								"storedProcedureParameters": {
 									"Remarks": {
 										"value": {
@@ -300,7 +300,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "SELECT \n    SUM([Read]) AS ReadSum,\n    SUM([Write]) AS WriteSum,\n    SUM([Remaining]) AS RemainingSum,\n    DB_NAME() AS DatabaseName,\n    [Year],\n    DATENAME(MONTH, DATEFROMPARTS(Year, Month, 1)) AS MonthName,\n    CASE \n        WHEN [Day] = 0 THEN NULL \n        ELSE [Day] \n    END AS Day,\n    CASE \n        WHEN MAX(CASE WHEN Status = 'Failed' THEN 1 ELSE 0 END) = 1 THEN 'Failed'\n        ELSE 'Success'\n    END AS FinalStatus,\n    Remarks,\n    FORMAT(\n        GETUTCDATE() AT TIME ZONE 'UTC' AT TIME ZONE 'Singapore Standard Time', \n        'MMMM dd, yyyy'\n    ) AS DateToday\nFROM ArchivalMonitoring\nWHERE PipelineRunID = '@{pipeline().RunId}'\nGROUP BY [Year], [Month], [Day], [Remarks];",
+							"value": "SELECT \n    SUM([Read]) AS ReadSum,\n    SUM([Write]) AS WriteSum,\n    SUM([Remaining]) AS RemainingSum,\n    DB_NAME() AS DatabaseName,\n    [Year],\n    DATENAME(MONTH, DATEFROMPARTS(Year, Month, 1)) AS MonthName,\n    CASE \n        WHEN [Day] = 0 THEN NULL \n        ELSE [Day] \n    END AS Day,\n    CASE \n        WHEN MAX(CASE WHEN Status = 'Failed' THEN 1 ELSE 0 END) = 1 THEN 'Failed'\n        ELSE 'Success'\n    END AS FinalStatus,\n    Remarks,\n    FORMAT(\n        GETUTCDATE() AT TIME ZONE 'UTC' AT TIME ZONE 'Singapore Standard Time', \n        'MMMM dd, yyyy'\n    ) AS DateToday\nFROM Snowflake.ArchivalMonitoring\nWHERE PipelineRunID = '@{pipeline().RunId}'\nGROUP BY [Year], [Month], [Day], [Remarks];",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -361,7 +361,7 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"storedProcedureName": "[dbo].[DeleteArchivedData]",
+								"storedProcedureName": "[Snowflake].[Capataz-ADF_DeleteArchivedData]",
 								"storedProcedureParameters": {
 									"Day": {
 										"value": {
@@ -418,7 +418,7 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"storedProcedureName": "[dbo].[LogError]",
+								"storedProcedureName": "[Snowflake].[Capataz-ADF_LogError]",
 								"storedProcedureParameters": {
 									"Remarks": {
 										"value": {
@@ -467,7 +467,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "SELECT \n    SUM([Read]) AS TotalRead, \n    SUM([Write]) AS TotalWrite\nFROM ArchivalMonitoring\nWHERE PipelineRunID = '@{pipeline().RunId}'",
+							"value": "SELECT \n    SUM([Read]) AS TotalRead, \n    SUM([Write]) AS TotalWrite\nFROM Snowflake.ArchivalMonitoring\nWHERE PipelineRunID = '@{pipeline().RunId}'",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -512,7 +512,7 @@
 			},
 			"Month": {
 				"type": "Integer",
-				"defaultValue": 8
+				"defaultValue": 9
 			},
 			"Day": {
 				"type": "Integer"
