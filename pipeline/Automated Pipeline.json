@@ -186,6 +186,10 @@
 											"type": "Expression"
 										},
 										"type": "String"
+									},
+									"Remarks": {
+										"value": "@activity('Live to Archive DB').error",
+										"type": "String"
 									}
 								}
 							},
