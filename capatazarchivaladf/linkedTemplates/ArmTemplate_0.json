@@ -457,6 +457,13 @@
 													"type": "Expression"
 												},
 												"type": "String"
+											},
+											"Remarks": {
+												"value": {
+													"value": "@activity('Live to Archive DB').error",
+													"type": "Expression"
+												},
+												"type": "String"
 											}
 										}
 									},
@@ -1373,36 +1380,6 @@
 				"[concat(variables('factoryId'), '/datasets/CapatazDB')]",
 				"[concat(variables('factoryId'), '/linkedServices/CapatazLiveADFLinkedService')]",
 				"[concat(variables('factoryId'), '/datasets/ArchivedDBDataset')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DailyTrigger')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "Automated Pipeline",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
-					}
-				],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Minute",
-						"interval": 4,
-						"startTime": "2025-03-13T12:17:00",
-						"timeZone": "China Standard Time"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/Automated Pipeline')]"
 			]
 		}
 	]
