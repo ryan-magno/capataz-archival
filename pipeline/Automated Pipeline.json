@@ -166,13 +166,6 @@
 							"typeProperties": {
 								"storedProcedureName": "[SnowFlake].[Capataz-ADF_LogError]",
 								"storedProcedureParameters": {
-									"Errors": {
-										"value": {
-											"value": "@concat('Errors: ', string(activity('Live to Archive DB').output.errors))\n",
-											"type": "Expression"
-										},
-										"type": "String"
-									},
 									"TableName": {
 										"value": {
 											"value": "@item().TableName",
@@ -188,7 +181,10 @@
 										"type": "String"
 									},
 									"Remarks": {
-										"value": "@activity('Live to Archive DB').error",
+										"value": {
+											"value": "@activity('Live to Archive DB').error",
+											"type": "Expression"
+										},
 										"type": "String"
 									}
 								}
@@ -357,7 +353,7 @@
 					{
 						"activity": "Sum of Rows Read and Copied",
 						"dependencyConditions": [
-							"Succeeded"
+							"Completed"
 						]
 					}
 				],
@@ -489,7 +485,7 @@
 					{
 						"activity": "Iterate the Tables",
 						"dependencyConditions": [
-							"Succeeded"
+							"Completed"
 						]
 					}
 				],
