@@ -1,0 +1,36 @@
+{
+	"name": "CapatazMetadata1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "CapatazLiveADFLinkedService",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "TableName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IsActive",
+				"type": "bit"
+			},
+			{
+				"name": "ArchiveSequence",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "MinCreatedDate",
+				"type": "datetime2",
+				"scale": 7
+			},
+			{
+				"name": "CreatedDate",
+				"type": "datetime2",
+				"scale": 7
+			}
+		]
+	}
+}

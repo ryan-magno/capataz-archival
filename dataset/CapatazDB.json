@@ -1,0 +1,12 @@
+{
+	"name": "CapatazDB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "CapatazLiveADFLinkedService",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}
