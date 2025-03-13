@@ -5,35 +5,29 @@
 		"factoryName": {
 			"value": "capatazarchivaladf"
 		},
-		"ArchivedDBLinkedService_password": {
+		"CapatazArchiveDBLinkedService_password": {
 			"value": ""
 		},
-		"CapatazDBLinkedService_password": {
+		"CapatazLiveADFLinkedService_password": {
 			"value": ""
 		},
-		"CapatazDataLakeLinkedService_accountKey": {
-			"value": ""
-		},
-		"ArchivedDBLinkedService_properties_typeProperties_server": {
+		"CapatazArchiveDBLinkedService_properties_typeProperties_server": {
 			"value": "capatazserver.database.windows.net"
 		},
-		"ArchivedDBLinkedService_properties_typeProperties_database": {
-			"value": "archivaldb-capataz"
+		"CapatazArchiveDBLinkedService_properties_typeProperties_database": {
+			"value": "ArchivalDB-Simulation"
 		},
-		"ArchivedDBLinkedService_properties_typeProperties_userName": {
+		"CapatazArchiveDBLinkedService_properties_typeProperties_userName": {
 			"value": "sqladmin"
 		},
-		"CapatazDBLinkedService_properties_typeProperties_server": {
+		"CapatazLiveADFLinkedService_properties_typeProperties_server": {
 			"value": "capatazserver.database.windows.net"
 		},
-		"CapatazDBLinkedService_properties_typeProperties_database": {
+		"CapatazLiveADFLinkedService_properties_typeProperties_database": {
 			"value": "New-Capataz-Staging"
 		},
-		"CapatazDBLinkedService_properties_typeProperties_userName": {
+		"CapatazLiveADFLinkedService_properties_typeProperties_userName": {
 			"value": "sqladmin"
-		},
-		"CapatazDataLakeLinkedService_properties_typeProperties_url": {
-			"value": "https://capatazadls.dfs.core.windows.net/"
 		}
 	}
 }

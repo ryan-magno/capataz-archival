@@ -7,45 +7,37 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "capatazarchivaladf"
 		},
-		"ArchivedDBLinkedService_password": {
+		"CapatazArchiveDBLinkedService_password": {
 			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'ArchivedDBLinkedService'"
+			"metadata": "Secure string for 'password' of 'CapatazArchiveDBLinkedService'"
 		},
-		"CapatazDBLinkedService_password": {
+		"CapatazLiveADFLinkedService_password": {
 			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'CapatazDBLinkedService'"
+			"metadata": "Secure string for 'password' of 'CapatazLiveADFLinkedService'"
 		},
-		"CapatazDataLakeLinkedService_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'CapatazDataLakeLinkedService'"
-		},
-		"ArchivedDBLinkedService_properties_typeProperties_server": {
+		"CapatazArchiveDBLinkedService_properties_typeProperties_server": {
 			"type": "string",
 			"defaultValue": "capatazserver.database.windows.net"
 		},
-		"ArchivedDBLinkedService_properties_typeProperties_database": {
+		"CapatazArchiveDBLinkedService_properties_typeProperties_database": {
 			"type": "string",
-			"defaultValue": "archivaldb-capataz"
+			"defaultValue": "ArchivalDB-Simulation"
 		},
-		"ArchivedDBLinkedService_properties_typeProperties_userName": {
+		"CapatazArchiveDBLinkedService_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "sqladmin"
 		},
-		"CapatazDBLinkedService_properties_typeProperties_server": {
+		"CapatazLiveADFLinkedService_properties_typeProperties_server": {
 			"type": "string",
 			"defaultValue": "capatazserver.database.windows.net"
 		},
-		"CapatazDBLinkedService_properties_typeProperties_database": {
+		"CapatazLiveADFLinkedService_properties_typeProperties_database": {
 			"type": "string",
 			"defaultValue": "New-Capataz-Staging"
 		},
-		"CapatazDBLinkedService_properties_typeProperties_userName": {
+		"CapatazLiveADFLinkedService_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "sqladmin"
-		},
-		"CapatazDataLakeLinkedService_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://capatazadls.dfs.core.windows.net/"
 		},
 		"containerUri": {
 			"type": "string",
@@ -74,35 +66,29 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"ArchivedDBLinkedService_password": {
-						"value": "[parameters('ArchivedDBLinkedService_password')]"
+					"CapatazArchiveDBLinkedService_password": {
+						"value": "[parameters('CapatazArchiveDBLinkedService_password')]"
 					},
-					"CapatazDBLinkedService_password": {
-						"value": "[parameters('CapatazDBLinkedService_password')]"
+					"CapatazLiveADFLinkedService_password": {
+						"value": "[parameters('CapatazLiveADFLinkedService_password')]"
 					},
-					"CapatazDataLakeLinkedService_accountKey": {
-						"value": "[parameters('CapatazDataLakeLinkedService_accountKey')]"
+					"CapatazArchiveDBLinkedService_properties_typeProperties_server": {
+						"value": "[parameters('CapatazArchiveDBLinkedService_properties_typeProperties_server')]"
 					},
-					"ArchivedDBLinkedService_properties_typeProperties_server": {
-						"value": "[parameters('ArchivedDBLinkedService_properties_typeProperties_server')]"
+					"CapatazArchiveDBLinkedService_properties_typeProperties_database": {
+						"value": "[parameters('CapatazArchiveDBLinkedService_properties_typeProperties_database')]"
 					},
-					"ArchivedDBLinkedService_properties_typeProperties_database": {
-						"value": "[parameters('ArchivedDBLinkedService_properties_typeProperties_database')]"
+					"CapatazArchiveDBLinkedService_properties_typeProperties_userName": {
+						"value": "[parameters('CapatazArchiveDBLinkedService_properties_typeProperties_userName')]"
 					},
-					"ArchivedDBLinkedService_properties_typeProperties_userName": {
-						"value": "[parameters('ArchivedDBLinkedService_properties_typeProperties_userName')]"
+					"CapatazLiveADFLinkedService_properties_typeProperties_server": {
+						"value": "[parameters('CapatazLiveADFLinkedService_properties_typeProperties_server')]"
 					},
-					"CapatazDBLinkedService_properties_typeProperties_server": {
-						"value": "[parameters('CapatazDBLinkedService_properties_typeProperties_server')]"
+					"CapatazLiveADFLinkedService_properties_typeProperties_database": {
+						"value": "[parameters('CapatazLiveADFLinkedService_properties_typeProperties_database')]"
 					},
-					"CapatazDBLinkedService_properties_typeProperties_database": {
-						"value": "[parameters('CapatazDBLinkedService_properties_typeProperties_database')]"
-					},
-					"CapatazDBLinkedService_properties_typeProperties_userName": {
-						"value": "[parameters('CapatazDBLinkedService_properties_typeProperties_userName')]"
-					},
-					"CapatazDataLakeLinkedService_properties_typeProperties_url": {
-						"value": "[parameters('CapatazDataLakeLinkedService_properties_typeProperties_url')]"
+					"CapatazLiveADFLinkedService_properties_typeProperties_userName": {
+						"value": "[parameters('CapatazLiveADFLinkedService_properties_typeProperties_userName')]"
 					}
 				}
 			},

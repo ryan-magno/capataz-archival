@@ -7,411 +7,43 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "capatazarchivaladf"
 		},
-		"ArchivedDBLinkedService_password": {
+		"CapatazArchiveDBLinkedService_password": {
 			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'ArchivedDBLinkedService'"
+			"metadata": "Secure string for 'password' of 'CapatazArchiveDBLinkedService'"
 		},
-		"CapatazDBLinkedService_password": {
+		"CapatazLiveADFLinkedService_password": {
 			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'CapatazDBLinkedService'"
+			"metadata": "Secure string for 'password' of 'CapatazLiveADFLinkedService'"
 		},
-		"CapatazDataLakeLinkedService_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'CapatazDataLakeLinkedService'"
-		},
-		"ArchivedDBLinkedService_properties_typeProperties_server": {
+		"CapatazArchiveDBLinkedService_properties_typeProperties_server": {
 			"type": "string",
 			"defaultValue": "capatazserver.database.windows.net"
 		},
-		"ArchivedDBLinkedService_properties_typeProperties_database": {
+		"CapatazArchiveDBLinkedService_properties_typeProperties_database": {
 			"type": "string",
-			"defaultValue": "archivaldb-capataz"
+			"defaultValue": "ArchivalDB-Simulation"
 		},
-		"ArchivedDBLinkedService_properties_typeProperties_userName": {
+		"CapatazArchiveDBLinkedService_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "sqladmin"
 		},
-		"CapatazDBLinkedService_properties_typeProperties_server": {
+		"CapatazLiveADFLinkedService_properties_typeProperties_server": {
 			"type": "string",
 			"defaultValue": "capatazserver.database.windows.net"
 		},
-		"CapatazDBLinkedService_properties_typeProperties_database": {
+		"CapatazLiveADFLinkedService_properties_typeProperties_database": {
 			"type": "string",
 			"defaultValue": "New-Capataz-Staging"
 		},
-		"CapatazDBLinkedService_properties_typeProperties_userName": {
+		"CapatazLiveADFLinkedService_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "sqladmin"
-		},
-		"CapatazDataLakeLinkedService_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://capatazadls.dfs.core.windows.net/"
 		}
 	},
 	"variables": {
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
-		{
-			"name": "[concat(parameters('factoryName'), '/Archive Tables Pipeline')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Get Metadata",
-						"type": "Lookup",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 3,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"sqlReaderQuery": {
-									"value": "SELECT TableName FROM dbo.MetadataTable WHERE IsActive = 1",
-									"type": "Expression"
-								},
-								"queryTimeout": "02:00:00",
-								"partitionOption": "None"
-							},
-							"dataset": {
-								"referenceName": "CapatazMetadata",
-								"type": "DatasetReference",
-								"parameters": {}
-							},
-							"firstRowOnly": false
-						}
-					},
-					{
-						"name": "Iterate the Tables",
-						"type": "ForEach",
-						"dependsOn": [
-							{
-								"activity": "Get Metadata",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"items": {
-								"value": "@activity('Get Metadata').output.value",
-								"type": "Expression"
-							},
-							"isSequential": false,
-							"batchCount": 6,
-							"activities": [
-								{
-									"name": "SQL Database to ADLS",
-									"type": "Copy",
-									"state": "Inactive",
-									"onInactiveMarkAs": "Succeeded",
-									"dependsOn": [
-										{
-											"activity": "Live to Archive",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"policy": {
-										"timeout": "0.12:00:00",
-										"retry": 3,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"source": {
-											"type": "AzureSqlSource",
-											"queryTimeout": "02:00:00",
-											"partitionOption": "None"
-										},
-										"sink": {
-											"type": "ParquetSink",
-											"storeSettings": {
-												"type": "AzureBlobFSWriteSettings"
-											},
-											"formatSettings": {
-												"type": "ParquetWriteSettings"
-											}
-										},
-										"enableStaging": false,
-										"translator": {
-											"type": "TabularTranslator",
-											"typeConversion": true,
-											"typeConversionSettings": {
-												"allowDataTruncation": true,
-												"treatBooleanAsNumber": false
-											}
-										}
-									},
-									"inputs": [
-										{
-											"referenceName": "ArchivedDBDataset",
-											"type": "DatasetReference",
-											"parameters": {
-												"TableName": {
-													"value": "@item().TableName",
-													"type": "Expression"
-												}
-											}
-										}
-									],
-									"outputs": [
-										{
-											"referenceName": "SinkDatasetParquet",
-											"type": "DatasetReference",
-											"parameters": {
-												"FileName": {
-													"value": "@concat(\n    variables('Year'), '-', \n    variables('Month'), \n    if(equals(variables('Day'), ''), '', concat('-', variables('Day'))),\n    ' - ', pipeline().RunId, '.parquet'\n)\n",
-													"type": "Expression"
-												},
-												"Directory": {
-													"value": "@concat(replace(item().TableName, '.Archived', ''), '/', variables('Year'), '/', variables('Month'), '/')",
-													"type": "Expression"
-												}
-											}
-										}
-									]
-								},
-								{
-									"name": "Update Monitoring Table",
-									"type": "SqlServerStoredProcedure",
-									"state": "Inactive",
-									"onInactiveMarkAs": "Succeeded",
-									"dependsOn": [
-										{
-											"activity": "SQL Database to ADLS",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"policy": {
-										"timeout": "0.12:00:00",
-										"retry": 3,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"storedProcedureName": "[[dbo].[UpdateMonitoring]",
-										"storedProcedureParameters": {
-											"Remarks": {
-												"value": {
-													"value": "@activity('SQL Database to ADLS').error",
-													"type": "Expression"
-												},
-												"type": "String"
-											},
-											"Write": {
-												"value": {
-													"value": "@activity('SQL Database to ADLS').output.rowsCopied",
-													"type": "Expression"
-												},
-												"type": "Int16"
-											},
-											"Read": {
-												"value": {
-													"value": "@activity('SQL Database to ADLS').output.rowsRead",
-													"type": "Expression"
-												},
-												"type": "Int16"
-											},
-											"TableName": {
-												"value": {
-													"value": "@item().TableName",
-													"type": "Expression"
-												},
-												"type": "String"
-											},
-											"PipelineRunID": {
-												"value": {
-													"value": "@pipeline().RunId",
-													"type": "Expression"
-												},
-												"type": "String"
-											},
-											"Year": {
-												"value": {
-													"value": "@variables('Year')",
-													"type": "Expression"
-												},
-												"type": "Int16"
-											},
-											"Month": {
-												"value": {
-													"value": "@variables('Month')",
-													"type": "Expression"
-												},
-												"type": "Int16"
-											},
-											"Day": {
-												"value": {
-													"value": "@variables('Day')",
-													"type": "Expression"
-												},
-												"type": "Int16"
-											}
-										}
-									},
-									"linkedServiceName": {
-										"referenceName": "CapatazDBLinkedService",
-										"type": "LinkedServiceReference"
-									}
-								},
-								{
-									"name": "Log Copy Errors",
-									"type": "SqlServerStoredProcedure",
-									"state": "Inactive",
-									"onInactiveMarkAs": "Succeeded",
-									"dependsOn": [
-										{
-											"activity": "SQL Database to ADLS",
-											"dependencyConditions": [
-												"Failed"
-											]
-										}
-									],
-									"policy": {
-										"timeout": "0.12:00:00",
-										"retry": 3,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"storedProcedureName": "[[dbo].[LogError]",
-										"storedProcedureParameters": {
-											"Remarks": {
-												"value": {
-													"value": "@concat('Errors: ', string(activity('SQL Database to ADLS').output.errors))\n",
-													"type": "Expression"
-												},
-												"type": "String"
-											},
-											"TableName": {
-												"value": {
-													"value": "@item().TableName",
-													"type": "Expression"
-												},
-												"type": "String"
-											},
-											"PipelineRunID": {
-												"value": {
-													"value": "@pipeline().RunId",
-													"type": "Expression"
-												}
-											}
-										}
-									},
-									"linkedServiceName": {
-										"referenceName": "CapatazDBLinkedService",
-										"type": "LinkedServiceReference"
-									}
-								},
-								{
-									"name": "Live to Archive",
-									"type": "Copy",
-									"dependsOn": [],
-									"policy": {
-										"timeout": "0.12:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"source": {
-											"type": "AzureSqlSource",
-											"sqlReaderQuery": {
-												"value": "@if(\n    or(\n        equals(item().TableName, 'ProfileTimeKeepingWhosWorkings'),\n        equals(item().TableName, 'ProfileTimeKeepingWhosWorkings.Archived')\n    ),\n    concat(\n        'SELECT * FROM [', item().TableName, '] WITH (NOLOCK) WHERE YEAR([DateTimeInOut]) = ', variables('Year')\n    ),\n    concat(\n        'SELECT * FROM [', item().TableName, '] WITH (NOLOCK) WHERE YEAR([CreatedDate]) = ', variables('Year')\n    )\n)\n",
-												"type": "Expression"
-											},
-											"queryTimeout": "02:00:00",
-											"partitionOption": "None"
-										},
-										"sink": {
-											"type": "AzureSqlSink",
-											"sqlWriterStoredProcedureName": "[[dbo].[MoveArchivedData]",
-											"sqlWriterTableType": "dbo.ArchivedTableType",
-											"storedProcedureTableTypeParameterName": "ArchivedTableName",
-											"storedProcedureParameters": {
-												"ArchivedTableName": {
-													"type": "String",
-													"value": {
-														"value": "@item().TableName",
-														"type": "Expression"
-													}
-												}
-											},
-											"disableMetricsCollection": false
-										},
-										"enableStaging": false,
-										"translator": {
-											"type": "TabularTranslator",
-											"typeConversion": true,
-											"typeConversionSettings": {
-												"allowDataTruncation": true,
-												"treatBooleanAsNumber": false
-											}
-										}
-									},
-									"inputs": [
-										{
-											"referenceName": "CapatazDB",
-											"type": "DatasetReference",
-											"parameters": {}
-										}
-									],
-									"outputs": [
-										{
-											"referenceName": "ArchivedDBDataset",
-											"type": "DatasetReference",
-											"parameters": {
-												"TableName": {
-													"value": "@item().TableName",
-													"type": "Expression"
-												}
-											}
-										}
-									]
-								}
-							]
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"variables": {
-					"Year": {
-						"type": "String",
-						"defaultValue": "2022"
-					}
-				},
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/CapatazMetadata')]",
-				"[concat(variables('factoryId'), '/datasets/ArchivedDBDataset')]",
-				"[concat(variables('factoryId'), '/datasets/SinkDatasetParquet')]",
-				"[concat(variables('factoryId'), '/linkedServices/CapatazDBLinkedService')]",
-				"[concat(variables('factoryId'), '/datasets/CapatazDB')]"
-			]
-		},
 		{
 			"name": "[concat(parameters('factoryName'), '/Automated Pipeline')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
@@ -442,14 +74,14 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": {
-									"value": "SELECT \n    TableName,\n    ArchivalYear, \n    ArchivalMonth, \n    ArchivalDay\nFROM dbo.MetadataTable \nWHERE IsActive = 1;\n",
+									"value": "SELECT \n    TableName,\n    ArchivalYear, \n    ArchivalMonth, \n    ArchivalDay\nFROM SnowFlake.MetadataTable \nWHERE IsActive = 1;\n",
 									"type": "Expression"
 								},
 								"queryTimeout": "02:00:00",
 								"partitionOption": "None"
 							},
 							"dataset": {
-								"referenceName": "CapatazMetadata",
+								"referenceName": "CapatazMetadata1",
 								"type": "DatasetReference",
 								"parameters": {}
 							},
@@ -496,7 +128,7 @@
 									},
 									"userProperties": [],
 									"typeProperties": {
-										"storedProcedureName": "[[dbo].[UpdateMonitoring]",
+										"storedProcedureName": "[[SnowFlake].[Capataz-ADF_UpdateMonitoring]",
 										"storedProcedureParameters": {
 											"Remarks": {
 												"value": {
@@ -557,7 +189,7 @@
 										}
 									},
 									"linkedServiceName": {
-										"referenceName": "CapatazDBLinkedService",
+										"referenceName": "CapatazLiveADFLinkedService",
 										"type": "LinkedServiceReference"
 									}
 								},
@@ -581,7 +213,7 @@
 									},
 									"userProperties": [],
 									"typeProperties": {
-										"storedProcedureName": "[[dbo].[LogError]",
+										"storedProcedureName": "[[SnowFlake].[Capataz-ADF_LogError]",
 										"storedProcedureParameters": {
 											"Errors": {
 												"value": {
@@ -607,7 +239,7 @@
 										}
 									},
 									"linkedServiceName": {
-										"referenceName": "CapatazDBLinkedService",
+										"referenceName": "CapatazLiveADFLinkedService",
 										"type": "LinkedServiceReference"
 									}
 								},
@@ -651,14 +283,14 @@
 									},
 									"inputs": [
 										{
-											"referenceName": "CapatazDB",
+											"referenceName": "CapatazDB1",
 											"type": "DatasetReference",
 											"parameters": {}
 										}
 									],
 									"outputs": [
 										{
-											"referenceName": "ArchivedDBDataset",
+											"referenceName": "ArchivedDBDataset1",
 											"type": "DatasetReference",
 											"parameters": {
 												"TableName": {
@@ -685,7 +317,7 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"storedProcedureName": "[[dbo].[UpdateMetadata]",
+							"storedProcedureName": "[[SnowFlake].[Capataz-ADF_UpdateMetadata]",
 							"storedProcedureParameters": {
 								"RetentionMonth": {
 									"value": "3",
@@ -694,7 +326,7 @@
 							}
 						},
 						"linkedServiceName": {
-							"referenceName": "CapatazDBLinkedService",
+							"referenceName": "CapatazLiveADFLinkedService",
 							"type": "LinkedServiceReference"
 						}
 					},
@@ -753,14 +385,14 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": {
-									"value": "SELECT \n    SUM([Read]) AS ReadSum,\n    SUM([Write]) AS WriteSum,\n    SUM([Remaining]) AS RemainingSum,\n    DB_NAME() AS DatabaseName,\n    [Year],\n    DATENAME(MONTH, DATEFROMPARTS(Year, Month, 1)) AS MonthName,\n    [Day],\n    CASE \n        WHEN MAX(CASE WHEN Status = 'Failed' THEN 1 ELSE 0 END) = 1 THEN 'Failed'\n        WHEN MAX(CASE WHEN Status = 'Archived' THEN 1 ELSE 0 END) = 1 THEN 'Failed'\n        ELSE 'Success'\n    END AS FinalStatus,\n    Remarks,\n    FORMAT(\n        GETUTCDATE() AT TIME ZONE 'UTC' AT TIME ZONE 'Singapore Standard Time', \n        'MMMM dd, yyyy'\n    ) AS DateToday\nFROM ArchivalMonitoring\nWHERE PipelineRunID = '@{pipeline().RunId}'\nGROUP BY [Year], [Month], [Day], [Remarks];\n",
+									"value": "SELECT \n    SUM([Read]) AS ReadSum,\n    SUM([Write]) AS WriteSum,\n    SUM([Remaining]) AS RemainingSum,\n    DB_NAME() AS DatabaseName,\n    [Year],\n    DATENAME(MONTH, DATEFROMPARTS(Year, Month, 1)) AS MonthName,\n    [Day],\n    CASE \n        WHEN MAX(CASE WHEN Status = 'Failed' THEN 1 ELSE 0 END) = 1 THEN 'Failed'\n        WHEN MAX(CASE WHEN Status = 'Archived' THEN 1 ELSE 0 END) = 1 THEN 'Failed'\n        ELSE 'Success'\n    END AS FinalStatus,\n    Remarks,\n    FORMAT(\n        GETUTCDATE() AT TIME ZONE 'UTC' AT TIME ZONE 'Singapore Standard Time', \n        'MMMM dd, yyyy'\n    ) AS DateToday\nFROM SnowFlake.ArchivalMonitoring\nWHERE PipelineRunID = '@{pipeline().RunId}'\nGROUP BY [Year], [Month], [Day], [Remarks];\n",
 									"type": "Expression"
 								},
 								"queryTimeout": "02:00:00",
 								"partitionOption": "None"
 							},
 							"dataset": {
-								"referenceName": "CapatazDB",
+								"referenceName": "CapatazDB1",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -815,7 +447,7 @@
 									},
 									"userProperties": [],
 									"typeProperties": {
-										"storedProcedureName": "[[dbo].[DeleteArchivedData]",
+										"storedProcedureName": "[[SnowFlake].[Capataz-ADF_DeleteArchivedData]",
 										"storedProcedureParameters": {
 											"Day": {
 												"value": {
@@ -848,7 +480,7 @@
 										}
 									},
 									"linkedServiceName": {
-										"referenceName": "CapatazDBLinkedService",
+										"referenceName": "CapatazLiveADFLinkedService",
 										"type": "LinkedServiceReference"
 									}
 								},
@@ -872,7 +504,7 @@
 									},
 									"userProperties": [],
 									"typeProperties": {
-										"storedProcedureName": "[[dbo].[LogError]",
+										"storedProcedureName": "[[SnowFlake].[Capataz-ADF_LogError]",
 										"storedProcedureParameters": {
 											"Errors": {
 												"value": {
@@ -891,7 +523,7 @@
 										}
 									},
 									"linkedServiceName": {
-										"referenceName": "CapatazDBLinkedService",
+										"referenceName": "CapatazLiveADFLinkedService",
 										"type": "LinkedServiceReference"
 									}
 								}
@@ -921,14 +553,14 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": {
-									"value": "SELECT \n    SUM([Read]) AS TotalRead, \n    SUM([Write]) AS TotalWrite\nFROM ArchivalMonitoring\nWHERE PipelineRunID = '@{pipeline().RunId}'",
+									"value": "SELECT \n    SUM([Read]) AS TotalRead, \n    SUM([Write]) AS TotalWrite\nFROM SnowFlake.ArchivalMonitoring\nWHERE PipelineRunID = '@{pipeline().RunId}'",
 									"type": "Expression"
 								},
 								"queryTimeout": "02:00:00",
 								"partitionOption": "None"
 							},
 							"dataset": {
-								"referenceName": "CapatazDB",
+								"referenceName": "CapatazDB1",
 								"type": "DatasetReference",
 								"parameters": {}
 							},
@@ -972,10 +604,10 @@
 				"lastPublishTime": "2025-01-10T07:15:02Z"
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/CapatazMetadata')]",
-				"[concat(variables('factoryId'), '/linkedServices/CapatazDBLinkedService')]",
-				"[concat(variables('factoryId'), '/datasets/CapatazDB')]",
-				"[concat(variables('factoryId'), '/datasets/ArchivedDBDataset')]"
+				"[concat(variables('factoryId'), '/datasets/CapatazMetadata1')]",
+				"[concat(variables('factoryId'), '/linkedServices/CapatazLiveADFLinkedService')]",
+				"[concat(variables('factoryId'), '/datasets/CapatazDB1')]",
+				"[concat(variables('factoryId'), '/datasets/ArchivedDBDataset1')]"
 			]
 		},
 		{
@@ -1000,7 +632,7 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": {
-									"value": "SELECT TableName FROM dbo.MetadataTable WHERE IsActive = 1",
+									"value": "SELECT TableName FROM SnowFlake.MetadataTable WHERE IsActive = 1",
 									"type": "Expression"
 								},
 								"queryTimeout": "02:00:00",
@@ -1054,7 +686,7 @@
 									},
 									"userProperties": [],
 									"typeProperties": {
-										"storedProcedureName": "[[dbo].[UpdateMonitoring]",
+										"storedProcedureName": "[[SnowFlake].[Capataz-ADF_UpdateMonitoring]",
 										"storedProcedureParameters": {
 											"Remarks": {
 												"value": {
@@ -1115,7 +747,7 @@
 										}
 									},
 									"linkedServiceName": {
-										"referenceName": "CapatazDBLinkedService",
+										"referenceName": "CapatazLiveADFLinkedService",
 										"type": "LinkedServiceReference"
 									}
 								},
@@ -1139,7 +771,7 @@
 									},
 									"userProperties": [],
 									"typeProperties": {
-										"storedProcedureName": "[[dbo].[LogError]",
+										"storedProcedureName": "[[SnowFlake].[Capataz-ADF_LogError]",
 										"storedProcedureParameters": {
 											"Remarks": {
 												"value": {
@@ -1164,7 +796,7 @@
 										}
 									},
 									"linkedServiceName": {
-										"referenceName": "CapatazDBLinkedService",
+										"referenceName": "CapatazLiveADFLinkedService",
 										"type": "LinkedServiceReference"
 									}
 								},
@@ -1285,7 +917,7 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": {
-									"value": "SELECT \n    SUM([Read]) AS ReadSum,\n    SUM([Write]) AS WriteSum,\n    SUM([Remaining]) AS RemainingSum,\n    DB_NAME() AS DatabaseName,\n    [Year],\n    DATENAME(MONTH, DATEFROMPARTS(Year, Month, 1)) AS MonthName,\n    CASE \n        WHEN [Day] = 0 THEN NULL \n        ELSE [Day] \n    END AS Day,\n    CASE \n        WHEN MAX(CASE WHEN Status = 'Failed' THEN 1 ELSE 0 END) = 1 THEN 'Failed'\n        ELSE 'Success'\n    END AS FinalStatus,\n    Remarks,\n    FORMAT(\n        GETUTCDATE() AT TIME ZONE 'UTC' AT TIME ZONE 'Singapore Standard Time', \n        'MMMM dd, yyyy'\n    ) AS DateToday\nFROM ArchivalMonitoring\nWHERE PipelineRunID = '@{pipeline().RunId}'\nGROUP BY [Year], [Month], [Day], [Remarks];",
+									"value": "SELECT \n    SUM([Read]) AS ReadSum,\n    SUM([Write]) AS WriteSum,\n    SUM([Remaining]) AS RemainingSum,\n    DB_NAME() AS DatabaseName,\n    [Year],\n    DATENAME(MONTH, DATEFROMPARTS(Year, Month, 1)) AS MonthName,\n    CASE \n        WHEN [Day] = 0 THEN NULL \n        ELSE [Day] \n    END AS Day,\n    CASE \n        WHEN MAX(CASE WHEN Status = 'Failed' THEN 1 ELSE 0 END) = 1 THEN 'Failed'\n        ELSE 'Success'\n    END AS FinalStatus,\n    Remarks,\n    FORMAT(\n        GETUTCDATE() AT TIME ZONE 'UTC' AT TIME ZONE 'Singapore Standard Time', \n        'MMMM dd, yyyy'\n    ) AS DateToday\nFROM SnowFlake.ArchivalMonitoring\nWHERE PipelineRunID = '@{pipeline().RunId}'\nGROUP BY [Year], [Month], [Day], [Remarks];",
 									"type": "Expression"
 								},
 								"queryTimeout": "02:00:00",
@@ -1347,7 +979,7 @@
 									},
 									"userProperties": [],
 									"typeProperties": {
-										"storedProcedureName": "[[dbo].[DeleteArchivedData]",
+										"storedProcedureName": "[[SnowFlake].[Capataz-ADF_DeleteArchivedData]",
 										"storedProcedureParameters": {
 											"Day": {
 												"value": {
@@ -1380,7 +1012,7 @@
 										}
 									},
 									"linkedServiceName": {
-										"referenceName": "CapatazDBLinkedService",
+										"referenceName": "CapatazLiveADFLinkedService",
 										"type": "LinkedServiceReference"
 									}
 								},
@@ -1404,7 +1036,7 @@
 									},
 									"userProperties": [],
 									"typeProperties": {
-										"storedProcedureName": "[[dbo].[LogError]",
+										"storedProcedureName": "[[SnowFlake].[Capataz-ADF_LogError]",
 										"storedProcedureParameters": {
 											"Remarks": {
 												"value": {
@@ -1423,7 +1055,7 @@
 										}
 									},
 									"linkedServiceName": {
-										"referenceName": "CapatazDBLinkedService",
+										"referenceName": "CapatazLiveADFLinkedService",
 										"type": "LinkedServiceReference"
 									}
 								}
@@ -1453,7 +1085,7 @@
 							"source": {
 								"type": "AzureSqlSource",
 								"sqlReaderQuery": {
-									"value": "SELECT \n    SUM([Read]) AS TotalRead, \n    SUM([Write]) AS TotalWrite\nFROM ArchivalMonitoring\nWHERE PipelineRunID = '@{pipeline().RunId}'",
+									"value": "SELECT \n    SUM([Read]) AS TotalRead, \n    SUM([Write]) AS TotalWrite\nFROM SnowFlake.ArchivalMonitoring\nWHERE PipelineRunID = '@{pipeline().RunId}'",
 									"type": "Expression"
 								},
 								"queryTimeout": "02:00:00",
@@ -1502,7 +1134,7 @@
 					},
 					"Month": {
 						"type": "Integer",
-						"defaultValue": 8
+						"defaultValue": 10
 					},
 					"Day": {
 						"type": "Integer"
@@ -1517,7 +1149,7 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/CapatazMetadata')]",
 				"[concat(variables('factoryId'), '/datasets/CapatazDB')]",
-				"[concat(variables('factoryId'), '/linkedServices/CapatazDBLinkedService')]",
+				"[concat(variables('factoryId'), '/linkedServices/CapatazLiveADFLinkedService')]",
 				"[concat(variables('factoryId'), '/datasets/ArchivedDBDataset')]"
 			]
 		},
@@ -1527,7 +1159,7 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "ArchivedDBLinkedService",
+					"referenceName": "CapatazArchiveDBLinkedService",
 					"type": "LinkedServiceReference"
 				},
 				"parameters": {
@@ -1547,7 +1179,36 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/ArchivedDBLinkedService')]"
+				"[concat(variables('factoryId'), '/linkedServices/CapatazArchiveDBLinkedService')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ArchivedDBDataset1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "CapatazArchiveDBLinkedService",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"TableName": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": {
+						"value": "@dataset().TableName",
+						"type": "Expression"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/CapatazArchiveDBLinkedService')]"
 			]
 		},
 		{
@@ -1556,7 +1217,7 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "CapatazDBLinkedService",
+					"referenceName": "CapatazLiveADFLinkedService",
 					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
@@ -1565,7 +1226,25 @@
 				"typeProperties": {}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/CapatazDBLinkedService')]"
+				"[concat(variables('factoryId'), '/linkedServices/CapatazLiveADFLinkedService')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CapatazDB1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "CapatazLiveADFLinkedService",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/CapatazLiveADFLinkedService')]"
 			]
 		},
 		{
@@ -1574,7 +1253,7 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "CapatazDBLinkedService",
+					"referenceName": "CapatazLiveADFLinkedService",
 					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
@@ -1607,105 +1286,90 @@
 				"typeProperties": {}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/CapatazDBLinkedService')]"
+				"[concat(variables('factoryId'), '/linkedServices/CapatazLiveADFLinkedService')]"
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/SinkDatasetParquet')]",
+			"name": "[concat(parameters('factoryName'), '/CapatazMetadata1')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "CapatazDataLakeLinkedService",
+					"referenceName": "CapatazLiveADFLinkedService",
 					"type": "LinkedServiceReference"
 				},
-				"parameters": {
-					"FileName": {
-						"type": "string"
-					},
-					"Directory": {
-						"type": "string"
-					}
-				},
 				"annotations": [],
-				"type": "Parquet",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileName": {
-							"value": "@dataset().FileName",
-							"type": "Expression"
-						},
-						"folderPath": {
-							"value": "@dataset().Directory",
-							"type": "Expression"
-						},
-						"fileSystem": "capataz-datalake"
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "TableName",
+						"type": "nvarchar"
 					},
-					"compressionCodec": "snappy"
-				},
-				"schema": []
+					{
+						"name": "IsActive",
+						"type": "bit"
+					},
+					{
+						"name": "ArchiveSequence",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "MinCreatedDate",
+						"type": "datetime2",
+						"scale": 7
+					},
+					{
+						"name": "CreatedDate",
+						"type": "datetime2",
+						"scale": 7
+					}
+				],
+				"typeProperties": {}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/CapatazDataLakeLinkedService')]"
+				"[concat(variables('factoryId'), '/linkedServices/CapatazLiveADFLinkedService')]"
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ArchivedDBLinkedService')]",
+			"name": "[concat(parameters('factoryName'), '/CapatazArchiveDBLinkedService')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
 				"type": "AzureSqlDatabase",
 				"typeProperties": {
-					"server": "[parameters('ArchivedDBLinkedService_properties_typeProperties_server')]",
-					"database": "[parameters('ArchivedDBLinkedService_properties_typeProperties_database')]",
+					"server": "[parameters('CapatazArchiveDBLinkedService_properties_typeProperties_server')]",
+					"database": "[parameters('CapatazArchiveDBLinkedService_properties_typeProperties_database')]",
 					"encrypt": "mandatory",
 					"trustServerCertificate": false,
 					"authenticationType": "SQL",
-					"userName": "[parameters('ArchivedDBLinkedService_properties_typeProperties_userName')]",
+					"userName": "[parameters('CapatazArchiveDBLinkedService_properties_typeProperties_userName')]",
 					"password": {
 						"type": "SecureString",
-						"value": "[parameters('ArchivedDBLinkedService_password')]"
+						"value": "[parameters('CapatazArchiveDBLinkedService_password')]"
 					}
 				}
 			},
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/CapatazDBLinkedService')]",
+			"name": "[concat(parameters('factoryName'), '/CapatazLiveADFLinkedService')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
 				"type": "AzureSqlDatabase",
 				"typeProperties": {
-					"server": "[parameters('CapatazDBLinkedService_properties_typeProperties_server')]",
-					"database": "[parameters('CapatazDBLinkedService_properties_typeProperties_database')]",
+					"server": "[parameters('CapatazLiveADFLinkedService_properties_typeProperties_server')]",
+					"database": "[parameters('CapatazLiveADFLinkedService_properties_typeProperties_database')]",
 					"encrypt": "mandatory",
 					"trustServerCertificate": false,
 					"authenticationType": "SQL",
-					"userName": "[parameters('CapatazDBLinkedService_properties_typeProperties_userName')]",
+					"userName": "[parameters('CapatazLiveADFLinkedService_properties_typeProperties_userName')]",
 					"password": {
 						"type": "SecureString",
-						"value": "[parameters('CapatazDBLinkedService_password')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/CapatazDataLakeLinkedService')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('CapatazDataLakeLinkedService_properties_typeProperties_url')]",
-					"accountKey": {
-						"type": "SecureString",
-						"value": "[parameters('CapatazDataLakeLinkedService_accountKey')]"
+						"value": "[parameters('CapatazLiveADFLinkedService_password')]"
 					}
 				}
 			},
@@ -1730,9 +1394,9 @@
 				"type": "ScheduleTrigger",
 				"typeProperties": {
 					"recurrence": {
-						"frequency": "Hour",
-						"interval": 24,
-						"startTime": "2025-03-09T20:00:00",
+						"frequency": "Minute",
+						"interval": 4,
+						"startTime": "2025-03-13T12:10:00",
 						"timeZone": "China Standard Time"
 					}
 				}
