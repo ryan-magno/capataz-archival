@@ -1,0 +1,659 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name"
+		},
+		"CapatazLiveADFLinkedService": {
+			"type": "string"
+		},
+		"CapatazArchiveDBLinkedService": {
+			"type": "string"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/Automated Pipeline')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Get Metadata",
+						"description": "Get the tables, year, month, and day to archive",
+						"type": "Lookup",
+						"dependsOn": [
+							{
+								"activity": "Update Metadata",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 3,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderQuery": {
+									"value": "SELECT \n    TableName,\n    ArchivalYear, \n    ArchivalMonth, \n    ArchivalDay\nFROM SnowFlake.MetadataTable \nWHERE IsActive = 1;\n",
+									"type": "Expression"
+								},
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"dataset": {
+								"referenceName": "CapatazMetadata1",
+								"type": "DatasetReference"
+							},
+							"firstRowOnly": false
+						}
+					},
+					{
+						"name": "Iterate the Tables",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "Get Metadata",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('Get Metadata').output.value",
+								"type": "Expression"
+							},
+							"isSequential": false,
+							"batchCount": 6,
+							"activities": [
+								{
+									"name": "Update Monitoring Table",
+									"type": "SqlServerStoredProcedure",
+									"dependsOn": [
+										{
+											"activity": "Live to Archive DB",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 3,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"storedProcedureName": "[[SnowFlake].[Capataz-ADF_UpdateMonitoring]",
+										"storedProcedureParameters": {
+											"Remarks": {
+												"value": {
+													"value": "@activity('Live to Archive DB').error",
+													"type": "Expression"
+												},
+												"type": "String"
+											},
+											"Read": {
+												"value": {
+													"value": "@activity('Live to Archive DB').output.rowsCopied",
+													"type": "Expression"
+												},
+												"type": "Int16"
+											},
+											"Write": {
+												"value": {
+													"value": "@activity('Live to Archive DB').output.rowsRead",
+													"type": "Expression"
+												},
+												"type": "Int16"
+											},
+											"TableName": {
+												"value": {
+													"value": "@item().TableName",
+													"type": "Expression"
+												},
+												"type": "String"
+											},
+											"PipelineRunID": {
+												"value": {
+													"value": "@pipeline().RunId",
+													"type": "Expression"
+												},
+												"type": "String"
+											},
+											"Year": {
+												"value": {
+													"value": "@item().ArchivalYear",
+													"type": "Expression"
+												},
+												"type": "Int16"
+											},
+											"Month": {
+												"value": {
+													"value": "@item().ArchivalMonth",
+													"type": "Expression"
+												},
+												"type": "Int16"
+											},
+											"Day": {
+												"value": {
+													"value": "@item().ArchivalDay",
+													"type": "Expression"
+												},
+												"type": "Int16"
+											}
+										}
+									},
+									"linkedServiceName": {
+										"referenceName": "[parameters('CapatazLiveADFLinkedService')]",
+										"type": "LinkedServiceReference"
+									}
+								},
+								{
+									"name": "Log Copy Errors",
+									"type": "SqlServerStoredProcedure",
+									"dependsOn": [
+										{
+											"activity": "Live to Archive DB",
+											"dependencyConditions": [
+												"Failed"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 3,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"storedProcedureName": "[[SnowFlake].[Capataz-ADF_LogError]",
+										"storedProcedureParameters": {
+											"TableName": {
+												"value": {
+													"value": "@item().TableName",
+													"type": "Expression"
+												},
+												"type": "String"
+											},
+											"PipelineRunID": {
+												"value": {
+													"value": "@pipeline().RunId",
+													"type": "Expression"
+												},
+												"type": "String"
+											},
+											"Remarks": {
+												"value": {
+													"value": "@activity('Live to Archive DB').error",
+													"type": "Expression"
+												},
+												"type": "String"
+											}
+										}
+									},
+									"linkedServiceName": {
+										"referenceName": "[parameters('CapatazLiveADFLinkedService')]",
+										"type": "LinkedServiceReference"
+									}
+								},
+								{
+									"name": "Live to Archive DB",
+									"type": "Copy",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 3,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"source": {
+											"type": "AzureSqlSource",
+											"sqlReaderQuery": {
+												"value": "@if(\n    or(\n        equals(item().TableName, 'ProfileTimeKeepingWhosWorkings'),\n        equals(item().TableName, 'ProfileTimeKeepingWhosWorkings.Archived')\n    ),\n    concat(\n        'SELECT * FROM [', item().TableName, '] WITH (NOLOCK) WHERE YEAR([DateTimeInOut]) = ', item().ArchivalYear, \n        ' AND MONTH([DateTimeInOut]) = ', item().ArchivalMonth, \n        ' AND DAY([DateTimeInOut]) = ', item().ArchivalDay\n    ),\n    concat(\n        'SELECT * FROM [', item().TableName, '] WITH (NOLOCK) WHERE YEAR([CreatedDate]) = ', item().ArchivalYear, \n        ' AND MONTH([CreatedDate]) = ', item().ArchivalMonth, \n        ' AND DAY([CreatedDate]) = ', item().ArchivalDay\n    )\n)\n",
+												"type": "Expression"
+											},
+											"queryTimeout": "02:00:00",
+											"partitionOption": "None"
+										},
+										"sink": {
+											"type": "AzureSqlSink",
+											"writeBehavior": "insert",
+											"sqlWriterUseTableLock": true,
+											"disableMetricsCollection": false
+										},
+										"enableStaging": false,
+										"translator": {
+											"type": "TabularTranslator",
+											"typeConversion": true,
+											"typeConversionSettings": {
+												"allowDataTruncation": true,
+												"treatBooleanAsNumber": false
+											}
+										}
+									},
+									"inputs": [
+										{
+											"referenceName": "CapatazDB1",
+											"type": "DatasetReference"
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "ArchivedDBDataset1",
+											"type": "DatasetReference",
+											"parameters": {
+												"TableName": {
+													"value": "@item().TableName",
+													"type": "Expression"
+												}
+											}
+										}
+									]
+								}
+							]
+						}
+					},
+					{
+						"name": "Update Metadata",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 3,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[SnowFlake].[Capataz-ADF_UpdateMetadata]",
+							"storedProcedureParameters": {
+								"RetentionMonth": {
+									"value": "3",
+									"type": "Int16"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "[parameters('CapatazLiveADFLinkedService')]",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Send Email",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Get Total Runtime",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 3,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"url": {
+								"value": "https://prod-01.southeastasia.logic.azure.com:443/workflows/fd24815f482b479aa7378218736ff86f/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=uytA4HPLOJHOD0s3Xovv2IZatf9PZMngh1AyluztjM8",
+								"type": "Expression"
+							},
+							"body": {
+								"value": "{\n    \"PipelineRunID\": \"@{pipeline().RunId}\",\n    \"ReadSum\": \"@{activity('Email Contents').output.firstRow.ReadSum}\",\n    \"WriteSum\": \"@{activity('Email Contents').output.firstRow.WriteSum}\",\n    \"RemainingSum\": \"@{activity('Email Contents').output.firstRow.RemainingSum}\",\n    \"DatabaseName\": \"@{activity('Email Contents').output.firstRow.DatabaseName}\",\n    \"Year\": \"@{activity('Email Contents').output.firstRow.Year}\",\n    \"Month\": \"@{activity('Email Contents').output.firstRow.MonthName}\",\n    \"Day\": \"@{activity('Email Contents').output.firstRow.Day}\",\n    \"Status\": \"@{activity('Email Contents').output.firstRow.FinalStatus}\",\n    \"DateToday\": \"@{activity('Email Contents').output.firstRow.DateToday}\",\n    \"TotalRuntime\": \"@{variables('TotalRuntime')}\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Email Contents",
+						"type": "Lookup",
+						"dependsOn": [
+							{
+								"activity": "If Condition for Data Validation",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 3,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderQuery": {
+									"value": "SELECT \n    SUM([Read]) AS ReadSum,\n    SUM([Write]) AS WriteSum,\n    SUM([Remaining]) AS RemainingSum,\n    DB_NAME() AS DatabaseName,\n    [Year],\n    DATENAME(MONTH, DATEFROMPARTS(Year, Month, 1)) AS MonthName,\n    [Day],\n    CASE \n        WHEN MAX(CASE WHEN Status = 'Failed' THEN 1 ELSE 0 END) = 1 THEN 'Failed'\n        WHEN MAX(CASE WHEN Status = 'Archived' THEN 1 ELSE 0 END) = 1 THEN 'Failed'\n        ELSE 'Success'\n    END AS FinalStatus,\n    Remarks,\n    FORMAT(\n        GETUTCDATE() AT TIME ZONE 'UTC' AT TIME ZONE 'Singapore Standard Time', \n        'MMMM dd, yyyy'\n    ) AS DateToday\nFROM SnowFlake.ArchivalMonitoring\nWHERE PipelineRunID = '@{pipeline().RunId}'\nGROUP BY [Year], [Month], [Day], [Remarks];\n",
+									"type": "Expression"
+								},
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"dataset": {
+								"referenceName": "CapatazDB1",
+								"type": "DatasetReference"
+							}
+						}
+					},
+					{
+						"name": "If Condition for Data Validation",
+						"type": "IfCondition",
+						"dependsOn": [
+							{
+								"activity": "Sum of Rows Read and Copied",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"expression": {
+								"value": "@equals(activity('Sum of Rows Read and Copied').output.value[0].TotalRead, activity('Sum of Rows Read and Copied').output.value[0].TotalWrite)\n",
+								"type": "Expression"
+							},
+							"ifFalseActivities": [
+								{
+									"name": "Fail Activity",
+									"type": "Fail",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"message": {
+											"value": "Row count mismatch detected. Source row count: @{activity('Sum of Rows Read and Copied').output.value[0].TotalRead}, Sink row count: @{activity('Sum of Rows Read and Copied').output.value[0].TotalWrite}.\n",
+											"type": "Expression"
+										},
+										"errorCode": {
+											"value": "RowCountMismatch",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"ifTrueActivities": [
+								{
+									"name": "Delete Archived Data",
+									"type": "SqlServerStoredProcedure",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 3,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"storedProcedureName": "[[SnowFlake].[Capataz-ADF_DeleteArchivedData]",
+										"storedProcedureParameters": {
+											"Day": {
+												"value": {
+													"value": "@activity('Get Metadata').output.value[0].ArchivalDay",
+													"type": "Expression"
+												},
+												"type": "Int16"
+											},
+											"Month": {
+												"value": {
+													"value": "@activity('Get Metadata').output.value[0].ArchivalMonth",
+													"type": "Expression"
+												},
+												"type": "Int16"
+											},
+											"PipelineRunID": {
+												"value": {
+													"value": "@pipeline().RunId",
+													"type": "Expression"
+												},
+												"type": "String"
+											},
+											"Year": {
+												"value": {
+													"value": "@activity('Get Metadata').output.value[0].ArchivalYear",
+													"type": "Expression"
+												},
+												"type": "Int16"
+											}
+										}
+									},
+									"linkedServiceName": {
+										"referenceName": "[parameters('CapatazLiveADFLinkedService')]",
+										"type": "LinkedServiceReference"
+									}
+								},
+								{
+									"name": "Log Deletion Errors",
+									"type": "SqlServerStoredProcedure",
+									"dependsOn": [
+										{
+											"activity": "Delete Archived Data",
+											"dependencyConditions": [
+												"Failed"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 3,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"storedProcedureName": "[[SnowFlake].[Capataz-ADF_LogError]",
+										"storedProcedureParameters": {
+											"Errors": {
+												"value": {
+													"value": "@concat('Errors: ', string(activity('Delete Archived Data').output.message))\n",
+													"type": "Expression"
+												},
+												"type": "String"
+											},
+											"PipelineRunID": {
+												"value": {
+													"value": "@pipeline().RunId",
+													"type": "Expression"
+												},
+												"type": "String"
+											}
+										}
+									},
+									"linkedServiceName": {
+										"referenceName": "[parameters('CapatazLiveADFLinkedService')]",
+										"type": "LinkedServiceReference"
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "Sum of Rows Read and Copied",
+						"type": "Lookup",
+						"dependsOn": [
+							{
+								"activity": "Iterate the Tables",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderQuery": {
+									"value": "SELECT \n    SUM([Read]) AS TotalRead, \n    SUM([Write]) AS TotalWrite\nFROM SnowFlake.ArchivalMonitoring\nWHERE PipelineRunID = '@{pipeline().RunId}'",
+									"type": "Expression"
+								},
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"dataset": {
+								"referenceName": "CapatazDB1",
+								"type": "DatasetReference"
+							},
+							"firstRowOnly": false
+						}
+					},
+					{
+						"name": "Get Total Runtime",
+						"type": "SetVariable",
+						"dependsOn": [
+							{
+								"activity": "Email Contents",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"policy": {
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "TotalRuntime",
+							"value": {
+								"value": "@concat(\n    string(div(div(sub(ticks(utcNow()), ticks(pipeline().TriggerTime)), 10000000), 3600)), 'H:',\n    string(div(mod(div(sub(ticks(utcNow()), ticks(pipeline().TriggerTime)), 10000000), 3600), 60)), 'M:',\n    string(mod(div(sub(ticks(utcNow()), ticks(pipeline().TriggerTime)), 10000000), 60)), 'S'\n)",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"variables": {
+					"TotalRuntime": {
+						"type": "String"
+					}
+				},
+				"annotations": [],
+				"lastPublishTime": "2025-01-10T07:15:02Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/CapatazMetadata1')]",
+				"[concat(variables('factoryId'), '/datasets/CapatazDB1')]",
+				"[concat(variables('factoryId'), '/datasets/ArchivedDBDataset1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CapatazMetadata1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "[parameters('CapatazLiveADFLinkedService')]",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "TableName",
+						"type": "nvarchar"
+					},
+					{
+						"name": "IsActive",
+						"type": "bit"
+					},
+					{
+						"name": "ArchiveSequence",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "MinCreatedDate",
+						"type": "datetime2",
+						"scale": 7
+					},
+					{
+						"name": "CreatedDate",
+						"type": "datetime2",
+						"scale": 7
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CapatazDB1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "[parameters('CapatazLiveADFLinkedService')]",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ArchivedDBDataset1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "[parameters('CapatazArchiveDBLinkedService')]",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"TableName": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": {
+						"value": "@dataset().TableName",
+						"type": "Expression"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
