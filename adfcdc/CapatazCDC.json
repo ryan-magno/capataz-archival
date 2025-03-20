@@ -1,0 +1,6825 @@
+{
+	"name": "CapatazCDC",
+	"properties": {
+		"SourceConnectionsInfo": [
+			{
+				"SourceEntities": [
+					{
+						"name": "dbo.TimelogTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "TimelogTypes"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ProfileJobOrderTimeLogs",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ProfileJobOrderTimeLogs"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ActivityLog",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ActivityLog"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ProfileJobOrderTimeLogTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ProfileJobOrderTimeLogTypes"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.TraceLocations",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "TraceLocations"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ActivityLogContents",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ActivityLogContents"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ProfilePerformances",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ProfilePerformances"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.TraceLocations.Archived",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "TraceLocations"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.Addresses",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "Addresses"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ProfileTimekeepingConflicts",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ProfileTimekeepingConflicts"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.UserAccessAssociations",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "UserAccessAssociations"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.APIKeyLicenses",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "APIKeyLicenses"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ProfileTimeKeepings",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ProfileTimeKeepings"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ApplicationRoleCategory",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ApplicationRoleCategory"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ProfileTimeKeepings.Archived",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ProfileTimeKeepings"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.UserMessages",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "UserMessages"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ProfileTimeKeepingWhosWorkings",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ProfileTimeKeepingWhosWorkings"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.AspNetRoles",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "AspNetRoles"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ProfileTimeKeepingWorkSchedules",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ProfileTimeKeepingWorkSchedules"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.UserProfileCompanyRequests",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "UserProfileCompanyRequests"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ProfileTimeKeepingWorkSchedules.Archived",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ProfileTimeKeepingWorkSchedules"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.UserProfileExtensions",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "UserProfileExtensions"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ProfileTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ProfileTypes"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.UserProfileFacialImages",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "UserProfileFacialImages"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefBankAccountTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefBankAccountTypes"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.AspNetUsers",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "AspNetUsers"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.UserProfileFinancials",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "UserProfileFinancials"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefBankNames",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefBankNames"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.UserProfileLicenses",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "UserProfileLicenses"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefChargeTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefChargeTypes"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.CivilStatuses",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "CivilStatuses"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefChecklistType",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefChecklistType"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.Companies",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "Companies"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.UserProfiles",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "UserProfiles"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefCompanySettingKeys",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefCompanySettingKeys"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.CompanyLicenses",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "CompanyLicenses"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.UserRequestAttachments",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "UserRequestAttachments"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.CompanySettings",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "CompanySettings"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.UserRequests",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "UserRequests"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.CostCenterCategories",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "CostCenterCategories"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefConnectionTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefConnectionTypes"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.CostCenters",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "CostCenters"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefCountries",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefCountries"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.CostingTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "CostingTypes"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.WorkSchedules",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "WorkSchedules"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefDailyTimeRecordSourceLogs",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefDailyTimeRecordSourceLogs"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.DailyTimeRecords",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "DailyTimeRecords"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.WorkSchedules.Archived",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "WorkSchedules"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefDailyTimeRecordStatuses",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefDailyTimeRecordStatuses"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.DeeplinkInformations",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "DeeplinkInformations"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.WorkScheduleTemplatePolicies",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "WorkScheduleTemplatePolicies"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefDepartments",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefDepartments"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.DeviceCodes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "DeviceCodes"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "CreationTime"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.WorkScheduleTemplates",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "WorkScheduleTemplates"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefExpenseStatus",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefExpenseStatus"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.Events",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "Events"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.EventTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "EventTypes"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.WorkScheduleTemplateValues",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "WorkScheduleTemplateValues"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefFieldTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefFieldTypes"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.WorkScheduleUserConfigurations",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "WorkScheduleUserConfigurations"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ExpenseEntityReferenceTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ExpenseEntityReferenceTypes"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefHolidayEntries",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefHolidayEntries"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.WorkShifts",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "WorkShifts"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefHolidays",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefHolidays"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.Facilities",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "Facilities"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "DeletedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefHolidayTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefHolidayTypes"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.Frequencies",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "Frequencies"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefItemCategory",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefItemCategory"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.Genders",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "Genders"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefItems",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefItems"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefItemType",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefItemType"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.HolidayGroupings",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "HolidayGroupings"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.View_GetKioskLatestTimekeeping",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "View_GetKioskLatestTimekeeping"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.View_GetLatestTimekeeping",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "View_GetLatestTimekeeping"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "DateTimeInOut"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefJobOrderChargingTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefJobOrderChargingTypes"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.HolidayPremiums",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "HolidayPremiums"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.Holidays",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "Holidays"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefJobOrderChecklistItems",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefJobOrderChecklistItems"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.JobOrderAttachments",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "JobOrderAttachments"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefJobOrderChecklists",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefJobOrderChecklists"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.JobOrderChecklistItems",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "JobOrderChecklistItems"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefLicenseStatuses",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefLicenseStatuses"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.JobOrderChecklists",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "JobOrderChecklists"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefMessagesTemplate",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefMessagesTemplate"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.JobOrderRecurrings",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "JobOrderRecurrings"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefModeOfTransportations",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefModeOfTransportations"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.JobOrderReviews",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "JobOrderReviews"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefNatureOfBusiness",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefNatureOfBusiness"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.JobOrders",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "JobOrders"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefNatureOfBusinessItem",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefNatureOfBusinessItem"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.JobOrderSchedules",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "JobOrderSchedules"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefProfileJobOrderChargingTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefProfileJobOrderChargingTypes"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.JobOrderTargetOutputLogs",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "JobOrderTargetOutputLogs"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefProfileSourceType",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefProfileSourceType"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.JobOrderTemplates",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "JobOrderTemplates"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.JobStatuses",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "JobStatuses"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefProfileTimekeepingConflictTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefProfileTimekeepingConflictTypes"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.Licenses",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "Licenses"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefProfileTimeKeepingEntryType",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefProfileTimeKeepingEntryType"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.LocationCheckIns",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "LocationCheckIns"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.LocationCheckInTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "LocationCheckInTypes"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefRemarks",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefRemarks"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.MessageContents",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "MessageContents"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefRequestCategories",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefRequestCategories"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.NotificationContents",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "NotificationContents"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.NotificationContents.Archived",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "NotificationContents"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefRequestStatus",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefRequestStatus"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.NotificationMessages",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "NotificationMessages"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefRequestTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefRequestTypes"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.Notifications",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "Notifications"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.Notifications.Archived",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "Notifications"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefScheduleTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefScheduleTypes"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.OneTimePasswords",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "OneTimePasswords"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefSettings",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefSettings"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.OutOfOffices",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "OutOfOffices"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefStaticContents",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefStaticContents"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefSubscriptions",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefSubscriptions"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefTimeKeepingPlatformTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefTimeKeepingPlatformTypes"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.Overtimes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "Overtimes"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefUnitOfMeasures",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefUnitOfMeasures"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefUserCompanySettings",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefUserCompanySettings"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.PersistedGrants",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "PersistedGrants"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "CreationTime"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.PositionLevels",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "PositionLevels"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefWorkArrangements",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefWorkArrangements"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.Priorities",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "Priorities"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.Reimbursements",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "Reimbursements"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.Professions",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "Professions"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ProfileJobOrderAssignedAssets",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ProfileJobOrderAssignedAssets"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ReimbursementTransportations",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ReimbursementTransportations"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ProfileJobOrderConsumables",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ProfileJobOrderConsumables"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ReimbursementTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ReimbursementTypes"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ProfileJobOrderExpenses",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ProfileJobOrderExpenses"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RequestApprovers",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RequestApprovers"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ProfileJobOrders",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ProfileJobOrders"
+								},
+								{
+									"name": "enableCdc",
+									"value": true
+								},
+								{
+									"name": "waterMarkColumn",
+									"value": "UpdatedDate"
+								}
+							]
+						}
+					}
+				],
+				"Connection": {
+					"linkedService": {
+						"referenceName": "CapatazLiveADFLinkedService",
+						"type": "LinkedServiceReference"
+					},
+					"linkedServiceType": "AzureSqlDatabase",
+					"type": "linkedservicetype",
+					"isInlineDataset": true,
+					"commonDslConnectorProperties": [
+						{
+							"name": "allowSchemaDrift",
+							"value": true
+						},
+						{
+							"name": "inferDriftedColumnTypes",
+							"value": true
+						},
+						{
+							"name": "format",
+							"value": "table"
+						},
+						{
+							"name": "store",
+							"value": "sqlserver"
+						},
+						{
+							"name": "databaseType",
+							"value": "databaseType"
+						},
+						{
+							"name": "database",
+							"value": "database"
+						},
+						{
+							"name": "skipInitialLoad",
+							"value": true
+						}
+					]
+				}
+			}
+		],
+		"TargetConnectionsInfo": [
+			{
+				"TargetEntities": [
+					{
+						"name": "dbo.TimelogTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "TimelogTypes"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ProfileJobOrderTimeLogs",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ProfileJobOrderTimeLogs"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ActivityLog",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ActivityLog"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ProfileJobOrderTimeLogTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ProfileJobOrderTimeLogTypes"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.TraceLocations",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "TraceLocations"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ActivityLogContents",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ActivityLogContents"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ProfilePerformances",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ProfilePerformances"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.Addresses",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "Addresses"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ProfileTimekeepingConflicts",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ProfileTimekeepingConflicts"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.UserAccessAssociations",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "UserAccessAssociations"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.APIKeyLicenses",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "APIKeyLicenses"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ProfileTimeKeepings",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ProfileTimeKeepings"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ApplicationRoleCategory",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ApplicationRoleCategory"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.UserMessages",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "UserMessages"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ProfileTimeKeepingWhosWorkings",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ProfileTimeKeepingWhosWorkings"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.AspNetRoles",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "AspNetRoles"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ProfileTimeKeepingWorkSchedules",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ProfileTimeKeepingWorkSchedules"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.UserProfileCompanyRequests",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "UserProfileCompanyRequests"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.UserProfileExtensions",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "UserProfileExtensions"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ProfileTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ProfileTypes"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.UserProfileFacialImages",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "UserProfileFacialImages"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefBankAccountTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefBankAccountTypes"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.AspNetUsers",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "AspNetUsers"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.UserProfileFinancials",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "UserProfileFinancials"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefBankNames",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefBankNames"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.UserProfileLicenses",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "UserProfileLicenses"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefChargeTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefChargeTypes"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.CivilStatuses",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "CivilStatuses"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefChecklistType",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefChecklistType"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.Companies",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "Companies"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.UserProfiles",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "UserProfiles"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefCompanySettingKeys",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefCompanySettingKeys"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.CompanyLicenses",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "CompanyLicenses"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.UserRequestAttachments",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "UserRequestAttachments"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.CompanySettings",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "CompanySettings"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.UserRequests",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "UserRequests"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.CostCenterCategories",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "CostCenterCategories"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefConnectionTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefConnectionTypes"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.CostCenters",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "CostCenters"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefCountries",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefCountries"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.CostingTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "CostingTypes"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.WorkSchedules",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "WorkSchedules"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefDailyTimeRecordSourceLogs",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefDailyTimeRecordSourceLogs"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.DailyTimeRecords",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "DailyTimeRecords"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.WorkSchedules.Archived",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "WorkSchedules"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefDailyTimeRecordStatuses",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefDailyTimeRecordStatuses"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.DeeplinkInformations",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "DeeplinkInformations"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.WorkScheduleTemplatePolicies",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "WorkScheduleTemplatePolicies"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefDepartments",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefDepartments"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.DeviceCodes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "DeviceCodes"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.WorkScheduleTemplates",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "WorkScheduleTemplates"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefExpenseStatus",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefExpenseStatus"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.Events",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "Events"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.EventTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "EventTypes"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.WorkScheduleTemplateValues",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "WorkScheduleTemplateValues"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefFieldTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefFieldTypes"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.WorkScheduleUserConfigurations",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "WorkScheduleUserConfigurations"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ExpenseEntityReferenceTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ExpenseEntityReferenceTypes"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefHolidayEntries",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefHolidayEntries"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.WorkShifts",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "WorkShifts"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefHolidays",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefHolidays"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.Facilities",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "Facilities"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefHolidayTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefHolidayTypes"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.Frequencies",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "Frequencies"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefItemCategory",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefItemCategory"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.Genders",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "Genders"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefItems",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefItems"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefItemType",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefItemType"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.HolidayGroupings",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "HolidayGroupings"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.View_GetKioskLatestTimekeeping",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "View_GetKioskLatestTimekeeping"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.View_GetLatestTimekeeping",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "View_GetLatestTimekeeping"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefJobOrderChargingTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefJobOrderChargingTypes"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.HolidayPremiums",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "HolidayPremiums"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.Holidays",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "Holidays"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefJobOrderChecklistItems",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefJobOrderChecklistItems"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.JobOrderAttachments",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "JobOrderAttachments"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefJobOrderChecklists",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefJobOrderChecklists"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.JobOrderChecklistItems",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "JobOrderChecklistItems"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefLicenseStatuses",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefLicenseStatuses"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.JobOrderChecklists",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "JobOrderChecklists"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefMessagesTemplate",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefMessagesTemplate"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.JobOrderRecurrings",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "JobOrderRecurrings"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefModeOfTransportations",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefModeOfTransportations"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.JobOrderReviews",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "JobOrderReviews"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefNatureOfBusiness",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefNatureOfBusiness"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.JobOrders",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "JobOrders"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefNatureOfBusinessItem",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefNatureOfBusinessItem"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.JobOrderSchedules",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "JobOrderSchedules"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefProfileJobOrderChargingTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefProfileJobOrderChargingTypes"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.JobOrderTargetOutputLogs",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "JobOrderTargetOutputLogs"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefProfileSourceType",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefProfileSourceType"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.JobOrderTemplates",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "JobOrderTemplates"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.JobStatuses",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "JobStatuses"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefProfileTimekeepingConflictTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefProfileTimekeepingConflictTypes"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.Licenses",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "Licenses"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefProfileTimeKeepingEntryType",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefProfileTimeKeepingEntryType"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.LocationCheckIns",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "LocationCheckIns"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.LocationCheckInTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "LocationCheckInTypes"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefRemarks",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefRemarks"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.MessageContents",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "MessageContents"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefRequestCategories",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefRequestCategories"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.NotificationContents",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "NotificationContents"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefRequestStatus",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefRequestStatus"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.NotificationMessages",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "NotificationMessages"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefRequestTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefRequestTypes"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.Notifications",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "Notifications"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefScheduleTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefScheduleTypes"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.OneTimePasswords",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "OneTimePasswords"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefSettings",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefSettings"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.OutOfOffices",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "OutOfOffices"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefStaticContents",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefStaticContents"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefSubscriptions",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefSubscriptions"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefTimeKeepingPlatformTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefTimeKeepingPlatformTypes"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.Overtimes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "Overtimes"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefUnitOfMeasures",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefUnitOfMeasures"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefUserCompanySettings",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefUserCompanySettings"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.PersistedGrants",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "PersistedGrants"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.PositionLevels",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "PositionLevels"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RefWorkArrangements",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RefWorkArrangements"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.Priorities",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "Priorities"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.Reimbursements",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "Reimbursements"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.Professions",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "Professions"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ProfileJobOrderAssignedAssets",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ProfileJobOrderAssignedAssets"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ReimbursementTransportations",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ReimbursementTransportations"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ProfileJobOrderConsumables",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ProfileJobOrderConsumables"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ReimbursementTypes",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ReimbursementTypes"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ProfileJobOrderExpenses",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ProfileJobOrderExpenses"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.RequestApprovers",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "RequestApprovers"
+								}
+							]
+						}
+					},
+					{
+						"name": "dbo.ProfileJobOrders",
+						"properties": {
+							"schema": [],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "ProfileJobOrders"
+								}
+							]
+						}
+					}
+				],
+				"Connection": {
+					"linkedService": {
+						"referenceName": "CapatazArchiveDBLinkedService",
+						"type": "LinkedServiceReference"
+					},
+					"linkedServiceType": "AzureSqlDatabase",
+					"type": "linkedservicetype",
+					"isInlineDataset": true,
+					"commonDslConnectorProperties": [
+						{
+							"name": "allowSchemaDrift",
+							"value": true
+						},
+						{
+							"name": "inferDriftedColumnTypes",
+							"value": true
+						},
+						{
+							"name": "format",
+							"value": "table"
+						},
+						{
+							"name": "store",
+							"value": "sqlserver"
+						},
+						{
+							"name": "databaseType",
+							"value": "databaseType"
+						},
+						{
+							"name": "database",
+							"value": "database"
+						},
+						{
+							"name": "deletable",
+							"value": false
+						},
+						{
+							"name": "insertable",
+							"value": true
+						},
+						{
+							"name": "updateable",
+							"value": false
+						},
+						{
+							"name": "upsertable",
+							"value": false
+						},
+						{
+							"name": "skipDuplicateMapInputs",
+							"value": true
+						},
+						{
+							"name": "skipDuplicateMapOutputs",
+							"value": true
+						}
+					]
+				},
+				"DataMapperMappings": [
+					{
+						"targetEntityName": "dbo.ActivityLog",
+						"sourceEntityName": "dbo.ActivityLog",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.ActivityLogContents",
+						"sourceEntityName": "dbo.ActivityLogContents",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.Addresses",
+						"sourceEntityName": "dbo.Addresses",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.APIKeyLicenses",
+						"sourceEntityName": "dbo.APIKeyLicenses",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.ApplicationRoleCategory",
+						"sourceEntityName": "dbo.ApplicationRoleCategory",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.AspNetRoles",
+						"sourceEntityName": "dbo.AspNetRoles",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.AspNetUsers",
+						"sourceEntityName": "dbo.AspNetUsers",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.CivilStatuses",
+						"sourceEntityName": "dbo.CivilStatuses",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.Companies",
+						"sourceEntityName": "dbo.Companies",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.CompanyLicenses",
+						"sourceEntityName": "dbo.CompanyLicenses",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.CompanySettings",
+						"sourceEntityName": "dbo.CompanySettings",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.CostCenterCategories",
+						"sourceEntityName": "dbo.CostCenterCategories",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.CostCenters",
+						"sourceEntityName": "dbo.CostCenters",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.CostingTypes",
+						"sourceEntityName": "dbo.CostingTypes",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.DailyTimeRecords",
+						"sourceEntityName": "dbo.DailyTimeRecords",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.DeeplinkInformations",
+						"sourceEntityName": "dbo.DeeplinkInformations",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.DeviceCodes",
+						"sourceEntityName": "dbo.DeviceCodes",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.Events",
+						"sourceEntityName": "dbo.Events",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.EventTypes",
+						"sourceEntityName": "dbo.EventTypes",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.ExpenseEntityReferenceTypes",
+						"sourceEntityName": "dbo.ExpenseEntityReferenceTypes",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.Facilities",
+						"sourceEntityName": "dbo.Facilities",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.Frequencies",
+						"sourceEntityName": "dbo.Frequencies",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.Genders",
+						"sourceEntityName": "dbo.Genders",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.HolidayGroupings",
+						"sourceEntityName": "dbo.HolidayGroupings",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.HolidayPremiums",
+						"sourceEntityName": "dbo.HolidayPremiums",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.Holidays",
+						"sourceEntityName": "dbo.Holidays",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.JobOrderAttachments",
+						"sourceEntityName": "dbo.JobOrderAttachments",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.JobOrderChecklistItems",
+						"sourceEntityName": "dbo.JobOrderChecklistItems",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.JobOrderChecklists",
+						"sourceEntityName": "dbo.JobOrderChecklists",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.JobOrderRecurrings",
+						"sourceEntityName": "dbo.JobOrderRecurrings",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.JobOrderReviews",
+						"sourceEntityName": "dbo.JobOrderReviews",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.JobOrders",
+						"sourceEntityName": "dbo.JobOrders",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.JobOrderSchedules",
+						"sourceEntityName": "dbo.JobOrderSchedules",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.JobOrderTargetOutputLogs",
+						"sourceEntityName": "dbo.JobOrderTargetOutputLogs",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.JobOrderTemplates",
+						"sourceEntityName": "dbo.JobOrderTemplates",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.JobStatuses",
+						"sourceEntityName": "dbo.JobStatuses",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.Licenses",
+						"sourceEntityName": "dbo.Licenses",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.LocationCheckIns",
+						"sourceEntityName": "dbo.LocationCheckIns",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.LocationCheckInTypes",
+						"sourceEntityName": "dbo.LocationCheckInTypes",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.MessageContents",
+						"sourceEntityName": "dbo.MessageContents",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.NotificationContents",
+						"sourceEntityName": "dbo.NotificationContents",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.NotificationMessages",
+						"sourceEntityName": "dbo.NotificationMessages",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.Notifications",
+						"sourceEntityName": "dbo.Notifications",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.OneTimePasswords",
+						"sourceEntityName": "dbo.OneTimePasswords",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.OutOfOffices",
+						"sourceEntityName": "dbo.OutOfOffices",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.Overtimes",
+						"sourceEntityName": "dbo.Overtimes",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.PersistedGrants",
+						"sourceEntityName": "dbo.PersistedGrants",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.PositionLevels",
+						"sourceEntityName": "dbo.PositionLevels",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.Priorities",
+						"sourceEntityName": "dbo.Priorities",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.Professions",
+						"sourceEntityName": "dbo.Professions",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.ProfileJobOrderAssignedAssets",
+						"sourceEntityName": "dbo.ProfileJobOrderAssignedAssets",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.ProfileJobOrderConsumables",
+						"sourceEntityName": "dbo.ProfileJobOrderConsumables",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.ProfileJobOrderExpenses",
+						"sourceEntityName": "dbo.ProfileJobOrderExpenses",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.ProfileJobOrders",
+						"sourceEntityName": "dbo.ProfileJobOrders",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.ProfileJobOrderTimeLogs",
+						"sourceEntityName": "dbo.ProfileJobOrderTimeLogs",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.ProfileJobOrderTimeLogTypes",
+						"sourceEntityName": "dbo.ProfileJobOrderTimeLogTypes",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.ProfilePerformances",
+						"sourceEntityName": "dbo.ProfilePerformances",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.ProfileTimekeepingConflicts",
+						"sourceEntityName": "dbo.ProfileTimekeepingConflicts",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.ProfileTimeKeepings",
+						"sourceEntityName": "dbo.ProfileTimeKeepings",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.ProfileTimeKeepingWhosWorkings",
+						"sourceEntityName": "dbo.ProfileTimeKeepingWhosWorkings",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.ProfileTimeKeepingWorkSchedules",
+						"sourceEntityName": "dbo.ProfileTimeKeepingWorkSchedules",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.ProfileTypes",
+						"sourceEntityName": "dbo.ProfileTypes",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefBankAccountTypes",
+						"sourceEntityName": "dbo.RefBankAccountTypes",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefBankNames",
+						"sourceEntityName": "dbo.RefBankNames",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefChargeTypes",
+						"sourceEntityName": "dbo.RefChargeTypes",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefChecklistType",
+						"sourceEntityName": "dbo.RefChecklistType",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefCompanySettingKeys",
+						"sourceEntityName": "dbo.RefCompanySettingKeys",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefConnectionTypes",
+						"sourceEntityName": "dbo.RefConnectionTypes",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefCountries",
+						"sourceEntityName": "dbo.RefCountries",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefDailyTimeRecordSourceLogs",
+						"sourceEntityName": "dbo.RefDailyTimeRecordSourceLogs",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefDailyTimeRecordStatuses",
+						"sourceEntityName": "dbo.RefDailyTimeRecordStatuses",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefDepartments",
+						"sourceEntityName": "dbo.RefDepartments",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefExpenseStatus",
+						"sourceEntityName": "dbo.RefExpenseStatus",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefFieldTypes",
+						"sourceEntityName": "dbo.RefFieldTypes",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefHolidayEntries",
+						"sourceEntityName": "dbo.RefHolidayEntries",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefHolidays",
+						"sourceEntityName": "dbo.RefHolidays",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefHolidayTypes",
+						"sourceEntityName": "dbo.RefHolidayTypes",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefItemCategory",
+						"sourceEntityName": "dbo.RefItemCategory",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefItems",
+						"sourceEntityName": "dbo.RefItems",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefItemType",
+						"sourceEntityName": "dbo.RefItemType",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefJobOrderChargingTypes",
+						"sourceEntityName": "dbo.RefJobOrderChargingTypes",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefJobOrderChecklistItems",
+						"sourceEntityName": "dbo.RefJobOrderChecklistItems",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefJobOrderChecklists",
+						"sourceEntityName": "dbo.RefJobOrderChecklists",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefLicenseStatuses",
+						"sourceEntityName": "dbo.RefLicenseStatuses",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefMessagesTemplate",
+						"sourceEntityName": "dbo.RefMessagesTemplate",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefModeOfTransportations",
+						"sourceEntityName": "dbo.RefModeOfTransportations",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefNatureOfBusiness",
+						"sourceEntityName": "dbo.RefNatureOfBusiness",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefNatureOfBusinessItem",
+						"sourceEntityName": "dbo.RefNatureOfBusinessItem",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefProfileJobOrderChargingTypes",
+						"sourceEntityName": "dbo.RefProfileJobOrderChargingTypes",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefProfileSourceType",
+						"sourceEntityName": "dbo.RefProfileSourceType",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefProfileTimekeepingConflictTypes",
+						"sourceEntityName": "dbo.RefProfileTimekeepingConflictTypes",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefProfileTimeKeepingEntryType",
+						"sourceEntityName": "dbo.RefProfileTimeKeepingEntryType",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefRemarks",
+						"sourceEntityName": "dbo.RefRemarks",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefRequestCategories",
+						"sourceEntityName": "dbo.RefRequestCategories",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefRequestStatus",
+						"sourceEntityName": "dbo.RefRequestStatus",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefRequestTypes",
+						"sourceEntityName": "dbo.RefRequestTypes",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefScheduleTypes",
+						"sourceEntityName": "dbo.RefScheduleTypes",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefSettings",
+						"sourceEntityName": "dbo.RefSettings",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefStaticContents",
+						"sourceEntityName": "dbo.RefStaticContents",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefSubscriptions",
+						"sourceEntityName": "dbo.RefSubscriptions",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefTimeKeepingPlatformTypes",
+						"sourceEntityName": "dbo.RefTimeKeepingPlatformTypes",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefUnitOfMeasures",
+						"sourceEntityName": "dbo.RefUnitOfMeasures",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefUserCompanySettings",
+						"sourceEntityName": "dbo.RefUserCompanySettings",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RefWorkArrangements",
+						"sourceEntityName": "dbo.RefWorkArrangements",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.Reimbursements",
+						"sourceEntityName": "dbo.Reimbursements",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.ReimbursementTransportations",
+						"sourceEntityName": "dbo.ReimbursementTransportations",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.ReimbursementTypes",
+						"sourceEntityName": "dbo.ReimbursementTypes",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.RequestApprovers",
+						"sourceEntityName": "dbo.RequestApprovers",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.TimelogTypes",
+						"sourceEntityName": "dbo.TimelogTypes",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.TraceLocations",
+						"sourceEntityName": "dbo.TraceLocations",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.UserAccessAssociations",
+						"sourceEntityName": "dbo.UserAccessAssociations",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.UserMessages",
+						"sourceEntityName": "dbo.UserMessages",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.UserProfileCompanyRequests",
+						"sourceEntityName": "dbo.UserProfileCompanyRequests",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.UserProfileExtensions",
+						"sourceEntityName": "dbo.UserProfileExtensions",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.UserProfileFacialImages",
+						"sourceEntityName": "dbo.UserProfileFacialImages",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.UserProfileFinancials",
+						"sourceEntityName": "dbo.UserProfileFinancials",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.UserProfileLicenses",
+						"sourceEntityName": "dbo.UserProfileLicenses",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.UserProfiles",
+						"sourceEntityName": "dbo.UserProfiles",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.UserRequestAttachments",
+						"sourceEntityName": "dbo.UserRequestAttachments",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.UserRequests",
+						"sourceEntityName": "dbo.UserRequests",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.View_GetKioskLatestTimekeeping",
+						"sourceEntityName": "dbo.View_GetKioskLatestTimekeeping",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.View_GetLatestTimekeeping",
+						"sourceEntityName": "dbo.View_GetLatestTimekeeping",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.WorkSchedules",
+						"sourceEntityName": "dbo.WorkSchedules",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.WorkSchedules.Archived",
+						"sourceEntityName": "dbo.WorkSchedules.Archived",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.WorkScheduleTemplatePolicies",
+						"sourceEntityName": "dbo.WorkScheduleTemplatePolicies",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.WorkScheduleTemplates",
+						"sourceEntityName": "dbo.WorkScheduleTemplates",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.WorkScheduleTemplateValues",
+						"sourceEntityName": "dbo.WorkScheduleTemplateValues",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.WorkScheduleUserConfigurations",
+						"sourceEntityName": "dbo.WorkScheduleUserConfigurations",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					},
+					{
+						"targetEntityName": "dbo.WorkShifts",
+						"sourceEntityName": "dbo.WorkShifts",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": []
+						}
+					}
+				],
+				"Relationships": []
+			}
+		],
+		"Policy": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 15
+			},
+			"mode": "Microbatch"
+		},
+		"allowVNetOverride": false
+	}
+}
