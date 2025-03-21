@@ -7,7 +7,36 @@
 					{
 						"name": "dbo.ActivityLog",
 						"properties": {
-							"schema": [],
+							"schema": [
+								{
+									"name": "Id",
+									"dataType": "string"
+								},
+								{
+									"name": "ActivityLogContentId",
+									"dataType": "string"
+								},
+								{
+									"name": "CreatedDate",
+									"dataType": "timestamp"
+								},
+								{
+									"name": "UpdatedDate",
+									"dataType": "timestamp"
+								},
+								{
+									"name": "CreatedBy",
+									"dataType": "string"
+								},
+								{
+									"name": "Subscriber",
+									"dataType": "string"
+								},
+								{
+									"name": "IsRead",
+									"dataType": "boolean"
+								}
+							],
 							"dslConnectorProperties": [
 								{
 									"name": "schemaName",
@@ -24,6 +53,14 @@
 								{
 									"name": "waterMarkColumn",
 									"value": "UpdatedDate"
+								},
+								{
+									"name": "allowSchemaDrift",
+									"value": false
+								},
+								{
+									"name": "inferDriftedColumnTypes",
+									"value": false
 								}
 							]
 						}
@@ -76,7 +113,36 @@
 					{
 						"name": "dbo.ActivityLog",
 						"properties": {
-							"schema": [],
+							"schema": [
+								{
+									"name": "Id",
+									"dataType": "string"
+								},
+								{
+									"name": "ActivityLogContentId",
+									"dataType": "string"
+								},
+								{
+									"name": "CreatedDate",
+									"dataType": "timestamp"
+								},
+								{
+									"name": "UpdatedDate",
+									"dataType": "timestamp"
+								},
+								{
+									"name": "CreatedBy",
+									"dataType": "string"
+								},
+								{
+									"name": "Subscriber",
+									"dataType": "string"
+								},
+								{
+									"name": "IsRead",
+									"dataType": "boolean"
+								}
+							],
 							"dslConnectorProperties": [
 								{
 									"name": "schemaName",
@@ -85,6 +151,36 @@
 								{
 									"name": "tableName",
 									"value": "ActivityLog"
+								},
+								{
+									"name": "allowSchemaDrift",
+									"value": false
+								},
+								{
+									"name": "inferDriftedColumnTypes",
+									"value": false
+								},
+								{
+									"name": "keys",
+									"value": [
+										"Id"
+									]
+								},
+								{
+									"name": "deletable",
+									"value": true
+								},
+								{
+									"name": "updateable",
+									"value": true
+								},
+								{
+									"name": "upsertable",
+									"value": true
+								},
+								{
+									"name": "defaultToUpsert",
+									"value": true
 								}
 							]
 						}
@@ -158,7 +254,99 @@
 							"type": "linkedservicetype"
 						},
 						"attributeMappingInfo": {
-							"attributeMappings": []
+							"attributeMappings": [
+								{
+									"name": "ActivityLogContentId",
+									"type": "Direct",
+									"functionName": "",
+									"attributeReference": {
+										"name": "ActivityLogContentId",
+										"entity": "dbo.ActivityLog",
+										"entityConnectionReference": {
+											"connectionName": "CapatazLiveADFLinkedService",
+											"type": "linkedservicetype"
+										}
+									}
+								},
+								{
+									"name": "CreatedBy",
+									"type": "Direct",
+									"functionName": "",
+									"attributeReference": {
+										"name": "CreatedBy",
+										"entity": "dbo.ActivityLog",
+										"entityConnectionReference": {
+											"connectionName": "CapatazLiveADFLinkedService",
+											"type": "linkedservicetype"
+										}
+									}
+								},
+								{
+									"name": "CreatedDate",
+									"type": "Direct",
+									"functionName": "",
+									"attributeReference": {
+										"name": "CreatedDate",
+										"entity": "dbo.ActivityLog",
+										"entityConnectionReference": {
+											"connectionName": "CapatazLiveADFLinkedService",
+											"type": "linkedservicetype"
+										}
+									}
+								},
+								{
+									"name": "Id",
+									"type": "Direct",
+									"functionName": "",
+									"attributeReference": {
+										"name": "Id",
+										"entity": "dbo.ActivityLog",
+										"entityConnectionReference": {
+											"connectionName": "CapatazLiveADFLinkedService",
+											"type": "linkedservicetype"
+										}
+									}
+								},
+								{
+									"name": "IsRead",
+									"type": "Direct",
+									"functionName": "",
+									"attributeReference": {
+										"name": "IsRead",
+										"entity": "dbo.ActivityLog",
+										"entityConnectionReference": {
+											"connectionName": "CapatazLiveADFLinkedService",
+											"type": "linkedservicetype"
+										}
+									}
+								},
+								{
+									"name": "Subscriber",
+									"type": "Direct",
+									"functionName": "",
+									"attributeReference": {
+										"name": "Subscriber",
+										"entity": "dbo.ActivityLog",
+										"entityConnectionReference": {
+											"connectionName": "CapatazLiveADFLinkedService",
+											"type": "linkedservicetype"
+										}
+									}
+								},
+								{
+									"name": "UpdatedDate",
+									"type": "Direct",
+									"functionName": "",
+									"attributeReference": {
+										"name": "UpdatedDate",
+										"entity": "dbo.ActivityLog",
+										"entityConnectionReference": {
+											"connectionName": "CapatazLiveADFLinkedService",
+											"type": "linkedservicetype"
+										}
+									}
+								}
+							]
 						}
 					}
 				],
