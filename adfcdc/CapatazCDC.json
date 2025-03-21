@@ -3389,6 +3389,10 @@
 								{
 									"name": "tableName",
 									"value": "ActivityLog"
+								},
+								{
+									"name": "defaultToUpsert",
+									"value": false
 								}
 							]
 						}
