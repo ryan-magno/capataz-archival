@@ -1,0 +1,343 @@
+{
+	"name": "CapatazCDC",
+	"properties": {
+		"SourceConnectionsInfo": [
+			{
+				"SourceEntities": [
+					{
+						"name": "dbo.TimelogTypes",
+						"properties": {
+							"schema": [
+								{
+									"name": "Id",
+									"dataType": "string"
+								},
+								{
+									"name": "CreatedBy",
+									"dataType": "string"
+								},
+								{
+									"name": "UpdatedBy",
+									"dataType": "string"
+								},
+								{
+									"name": "CreatedDate",
+									"dataType": "timestamp"
+								},
+								{
+									"name": "UpdatedDate",
+									"dataType": "timestamp"
+								},
+								{
+									"name": "Code",
+									"dataType": "string"
+								},
+								{
+									"name": "Description",
+									"dataType": "string"
+								}
+							],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "TimelogTypes"
+								},
+								{
+									"name": "enableNativeCdc",
+									"value": true
+								},
+								{
+									"name": "netChanges",
+									"value": true
+								},
+								{
+									"name": "allowSchemaDrift",
+									"value": false
+								},
+								{
+									"name": "inferDriftedColumnTypes",
+									"value": false
+								}
+							]
+						}
+					}
+				],
+				"Connection": {
+					"linkedService": {
+						"referenceName": "CapatazLiveADFLinkedService",
+						"type": "LinkedServiceReference"
+					},
+					"linkedServiceType": "AzureSqlDatabase",
+					"type": "linkedservicetype",
+					"isInlineDataset": true,
+					"commonDslConnectorProperties": [
+						{
+							"name": "allowSchemaDrift",
+							"value": true
+						},
+						{
+							"name": "inferDriftedColumnTypes",
+							"value": true
+						},
+						{
+							"name": "format",
+							"value": "table"
+						},
+						{
+							"name": "store",
+							"value": "sqlserver"
+						},
+						{
+							"name": "databaseType",
+							"value": "databaseType"
+						},
+						{
+							"name": "database",
+							"value": "database"
+						},
+						{
+							"name": "skipInitialLoad",
+							"value": true
+						}
+					]
+				}
+			}
+		],
+		"TargetConnectionsInfo": [
+			{
+				"TargetEntities": [
+					{
+						"name": "dbo.TimelogTypes",
+						"properties": {
+							"schema": [
+								{
+									"name": "Id",
+									"dataType": "string"
+								},
+								{
+									"name": "CreatedBy",
+									"dataType": "string"
+								},
+								{
+									"name": "UpdatedBy",
+									"dataType": "string"
+								},
+								{
+									"name": "CreatedDate",
+									"dataType": "timestamp"
+								},
+								{
+									"name": "UpdatedDate",
+									"dataType": "timestamp"
+								},
+								{
+									"name": "Code",
+									"dataType": "string"
+								},
+								{
+									"name": "Description",
+									"dataType": "string"
+								}
+							],
+							"dslConnectorProperties": [
+								{
+									"name": "schemaName",
+									"value": "dbo"
+								},
+								{
+									"name": "tableName",
+									"value": "TimelogTypes"
+								},
+								{
+									"name": "allowSchemaDrift",
+									"value": false
+								},
+								{
+									"name": "inferDriftedColumnTypes",
+									"value": false
+								}
+							]
+						}
+					}
+				],
+				"Connection": {
+					"linkedService": {
+						"referenceName": "CapatazArchiveDBLinkedService",
+						"type": "LinkedServiceReference"
+					},
+					"linkedServiceType": "AzureSqlDatabase",
+					"type": "linkedservicetype",
+					"isInlineDataset": true,
+					"commonDslConnectorProperties": [
+						{
+							"name": "allowSchemaDrift",
+							"value": true
+						},
+						{
+							"name": "inferDriftedColumnTypes",
+							"value": true
+						},
+						{
+							"name": "format",
+							"value": "table"
+						},
+						{
+							"name": "store",
+							"value": "sqlserver"
+						},
+						{
+							"name": "databaseType",
+							"value": "databaseType"
+						},
+						{
+							"name": "database",
+							"value": "database"
+						},
+						{
+							"name": "deletable",
+							"value": false
+						},
+						{
+							"name": "insertable",
+							"value": true
+						},
+						{
+							"name": "updateable",
+							"value": false
+						},
+						{
+							"name": "upsertable",
+							"value": false
+						},
+						{
+							"name": "skipDuplicateMapInputs",
+							"value": true
+						},
+						{
+							"name": "skipDuplicateMapOutputs",
+							"value": true
+						}
+					]
+				},
+				"DataMapperMappings": [
+					{
+						"targetEntityName": "dbo.TimelogTypes",
+						"sourceEntityName": "dbo.TimelogTypes",
+						"sourceConnectionReference": {
+							"connectionName": "CapatazLiveADFLinkedService",
+							"type": "linkedservicetype"
+						},
+						"attributeMappingInfo": {
+							"attributeMappings": [
+								{
+									"name": "Code",
+									"type": "Direct",
+									"functionName": "",
+									"attributeReference": {
+										"name": "Code",
+										"entity": "dbo.TimelogTypes",
+										"entityConnectionReference": {
+											"connectionName": "CapatazLiveADFLinkedService",
+											"type": "linkedservicetype"
+										}
+									}
+								},
+								{
+									"name": "CreatedBy",
+									"type": "Direct",
+									"functionName": "",
+									"attributeReference": {
+										"name": "CreatedBy",
+										"entity": "dbo.TimelogTypes",
+										"entityConnectionReference": {
+											"connectionName": "CapatazLiveADFLinkedService",
+											"type": "linkedservicetype"
+										}
+									}
+								},
+								{
+									"name": "CreatedDate",
+									"type": "Direct",
+									"functionName": "",
+									"attributeReference": {
+										"name": "CreatedDate",
+										"entity": "dbo.TimelogTypes",
+										"entityConnectionReference": {
+											"connectionName": "CapatazLiveADFLinkedService",
+											"type": "linkedservicetype"
+										}
+									}
+								},
+								{
+									"name": "Description",
+									"type": "Direct",
+									"functionName": "",
+									"attributeReference": {
+										"name": "Description",
+										"entity": "dbo.TimelogTypes",
+										"entityConnectionReference": {
+											"connectionName": "CapatazLiveADFLinkedService",
+											"type": "linkedservicetype"
+										}
+									}
+								},
+								{
+									"name": "Id",
+									"type": "Direct",
+									"functionName": "",
+									"attributeReference": {
+										"name": "Id",
+										"entity": "dbo.TimelogTypes",
+										"entityConnectionReference": {
+											"connectionName": "CapatazLiveADFLinkedService",
+											"type": "linkedservicetype"
+										}
+									}
+								},
+								{
+									"name": "UpdatedBy",
+									"type": "Direct",
+									"functionName": "",
+									"attributeReference": {
+										"name": "UpdatedBy",
+										"entity": "dbo.TimelogTypes",
+										"entityConnectionReference": {
+											"connectionName": "CapatazLiveADFLinkedService",
+											"type": "linkedservicetype"
+										}
+									}
+								},
+								{
+									"name": "UpdatedDate",
+									"type": "Direct",
+									"functionName": "",
+									"attributeReference": {
+										"name": "UpdatedDate",
+										"entity": "dbo.TimelogTypes",
+										"entityConnectionReference": {
+											"connectionName": "CapatazLiveADFLinkedService",
+											"type": "linkedservicetype"
+										}
+									}
+								}
+							]
+						}
+					}
+				],
+				"Relationships": []
+			}
+		],
+		"Policy": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 1
+			},
+			"mode": "Microbatch"
+		},
+		"allowVNetOverride": false
+	}
+}
