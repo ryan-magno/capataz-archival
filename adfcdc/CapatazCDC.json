@@ -85,6 +85,28 @@
 								{
 									"name": "tableName",
 									"value": "TimelogTypes"
+								},
+								{
+									"name": "keys",
+									"value": [
+										"Id"
+									]
+								},
+								{
+									"name": "deletable",
+									"value": true
+								},
+								{
+									"name": "updateable",
+									"value": true
+								},
+								{
+									"name": "upsertable",
+									"value": true
+								},
+								{
+									"name": "defaultToUpsert",
+									"value": true
 								}
 							]
 						}
@@ -168,7 +190,7 @@
 		"Policy": {
 			"recurrence": {
 				"frequency": "Minute",
-				"interval": 15
+				"interval": 1
 			},
 			"mode": "Microbatch"
 		},
